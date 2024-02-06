@@ -1,0 +1,268 @@
+HTTP Headers :-
+HTTP Headers are an impo part of the api req and res as they represent the meta data associated with the api req and response
+
+header carry info for the req and res body
+
+Build in header :-
+
+The HTTP Request Headers List
+
+
+Standard headers
+1.
+A-IM :-
+A-IM: feed
+
+Instance manipulations that are acceptable in the response. Defined in RFC 3229
+
+2.
+Accept :-
+Accept: application/json
+
+The media type/types acceptable
+3.
+Accept-Charset
+
+Accept-Charset: utf-8
+
+The charset acceptable
+
+4.
+Accept-Encoding :-
+Accept-Encoding: gzip, deflate
+
+List of acceptable encodings
+
+5.
+Accept-Language :-
+Accept-Language: en-US
+
+List of acceptable languages
+
+6.
+Accept-Datetime :-
+Accept-Datetime: Thu, 31 May 2007 20:35:00 GMT
+
+Request a past version of the resource prior to the datetime passed
+
+7.
+Access-Control-Request-Method :-
+Access-Control-Request-Method: GET
+
+Used in a CORS request
+
+8.
+Access-Control-Request-Headers
+Access-Control-Request-Headers: origin, x-requested-with, accept
+
+Used in a CORS request
+
+9.
+Authorization :-
+Authorization: Basic 34i3j4iom2323==
+
+HTTP basic authentication credentials
+
+10.
+Cache-Control
+Cache-Control: no-cache
+
+Set the caching rules
+
+11.
+Connection :-
+Connection: keep-alive
+
+Control options for the current connection. Accepts keep-alive and close. Deprecated in HTTP/2
+
+12.
+Content-Length :-
+Content-Length: 348
+
+The length of the request body in bytes
+
+13.
+Content-Type :-
+Content-Type: application/x-www-form-urlencoded
+
+The content type of the body of the request (used in POST and PUT requests).
+
+14.
+Cookie :-
+Cookie: name=value
+
+See more on Cookies
+
+15.
+Date :-
+Date: Tue, 15 Nov 1994 08:12:31 GMT
+
+The date and time that the request was sent
+
+16.
+Expect
+
+Expect: 100-continue
+
+It’s typically used when sending a large request body. We expect the server to return back a 100 Continue HTTP status if it can handle the request, or 417 Expectation Failed if not
+
+
+17.
+Forwarded :-
+Forwarded: for=192.0.2.60; proto=http; by=203.0.113.43
+
+Disclose original information of a client connecting to a web server through an HTTP proxy. Used for testing purposes only, as it discloses privacy sensitive information
+
+18.
+From :-
+From: user@example.com
+
+The email address of the user making the request. Meant to be used, for example, to indicate a contact email for bots.
+
+19.
+Host:-
+Host: flaviocopes.com
+
+The domain name of the server (used to determined the server with virtual hosting), and the TCP port number on which the server is listening. If the port is omitted, 80 is assumed. This is a mandatory HTTP request header
+
+20.
+If-Match :-
+If-Match: "737060cd8c284d8582d"
+
+Given one (or more) ETags, the server should only send back the response if the current resource matches one of those ETags. Mainly used in PUT methods to update a resource only if it has not been modified since the user last updated it
+
+21.
+If-Modified-Since :-
+If-Modified-Since: Sat, 29 Oct 1994 19:43:31 GMT
+
+Allows to return a 304 Not Modified response header if the content is unchanged since that date
+
+22.
+If-None-Match :-
+
+If-None-Match: "737060cd882f209582d"
+
+Allows a 304 Not Modified response header to be returned if content is unchanged. Opposite of If-Match.
+
+23.
+If-Range :-
+If-Range: "737060cd8c9582d"
+
+Used to resume downloads, returns a partial if the condition is matched (ETag or date) or the full resource if not. See more
+
+24.
+If-Unmodified-Since :-
+If-Unmodified-Since: Sat, 29 Oct 1994 19:43:31 GMT
+
+Only send the response if the entity has not been modified since the specified time
+
+25.
+Max-Forwards :-
+Max-Forwards: 10
+
+Limit the number of times the message can be forwarded through proxies or gateways
+
+26.
+Origin :-
+
+Origin: http://mydomain.com
+
+Send the current domain to perform a CORS(cross origin resource sharing) request, used in an OPTIONS HTTP request (to ask the server for Access-Control- response headers)
+
+27.
+Pragma :-
+Pragma: no-cache
+
+Used for backwards compatibility with HTTP/1.0 caches
+
+28.
+Proxy-Authorization :-
+Proxy-Authorization: Basic 2323jiojioIJOIOJIJ==
+
+Authorization credentials for connecting to a proxy
+
+29.
+Range :-
+Range: bytes=500-999
+
+Request only a specific part of a resource
+
+30.
+Referer :-
+Referer: https://flaviocopes.com
+
+The address of the previous web page from which a link to the currently requested page was followed.
+
+31.
+TE :-
+
+TE: trailers, deflate
+
+Specify the encodings the client can accept. Accepted values: compress, deflate, gzip, trailers. Only trailers is supported in HTTP/2
+
+32.
+User-Agent:-
+
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+
+The string that identifies the user agent
+
+33.
+Upgrade :-
+Upgrade: h2c, HTTPS/1.3, IRC/6.9, RTA/x11, websocket
+
+Ask the server to upgrade to another protocol. Deprecated in HTTP/2
+
+34.
+Via :-
+Via: 1.0 fred, 1.1 example.com (Apache/1.1)
+
+Informs the server of proxies through which the request was sent
+
+35.
+Warning :-
+Warning: 199 Miscellaneous warning
+
+A general warning about possible problems with the status of the message. Accepts a special range of values.
+
+
+Non-standard headers
+There are some widely used non-standard headers as well, including:
+
+1.
+Dnt :-
+DNT: 1
+
+If enabled, asks servers to not track the user
+
+2.
+X-Requested-With :-
+X-Requested-With: XMLHttpRequest
+
+Identifies XHR requests
+
+3.
+X-CSRF-Token :-
+
+X-CSRF-Token: <TOKEN>
+
+Used to prevent CSRF
+- CSRF stands for Cross Site Request Forgery.
+- CSRF is along with XSS and SQL Injection one of the most common web attacks.
+- a CSRF attack drive people visiting our site to perform actions they didn’t intend to.
+- A successful CSRF attack can lead to data loss, unauthorized activity, and data loss, so it’s definitely one topic to study carefully.
+
+
+HTTP Status Codes :-
+404 :- Not found
+200:- everything went well
+
+HTTP response status codes indicate whether a specific HTTP request has been successfully completed. Responses are grouped in five classes:
+
+1.Informational responses (100 – 199)
+2.Successful responses (200 – 299)
+3.Redirection messages (300 – 399)
+4.Client error responses (400 – 499)
+5.Server error responses (500 – 599)
+
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
