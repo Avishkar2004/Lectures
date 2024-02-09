@@ -1,0 +1,12 @@
+
+1707453794306 :::1 : POST : /api/users
+1707453807529 :::1 : GET : /api/users
+1707453819430 :::1 : GET : /api/users
+1707453980699 :::1 : POST : /api/users
+1707454054306 :::1 : GET : /users
+1707454116256 :::1 : GET : /api/users/65c5ae1cc90fa1ac7e10ad59
+1707454143836 :::1 : GET : /api/users/
+1707454154996 :::1 : GET : /api/users/65c5ad62c90fa1ac7e10ad55
+1707454191941 :::1 : GET : /api/users/65c5ad62c90fa1ac7e10ad55
+1707454208909 :::1 : GET : /api/users/65c5ae1cc90fa1ac7e10ad59
+1707454219356 :::1 : DELETE : /api/users/65c5ad62c90fa1ac7e10ad55
