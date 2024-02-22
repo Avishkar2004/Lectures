@@ -28,7 +28,7 @@ Nested Path :-
 www.puyusggarg.dev/project/e-commerce
 
 URL Query Parameters :-
-www.puyusggarg.dev/about?userid1@a=2
+www.puyusggarg.dev/about?userid1@a=2    
 
 Url module is used to parse url
 

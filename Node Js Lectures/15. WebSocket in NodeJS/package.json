@@ -1,19 +1,17 @@
 {
-  "name": "11.-url-shortener",
+  "name": "15.-websocket-in-nodejs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon index"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
-    "mongoosh": "^0.0.7",
-    "nanoid": "^5.0.5",
     "nodemon": "^3.0.3",
-    "shortid": "^2.2.16"
+    "socket.io": "^4.7.4"
   }
 }

@@ -9,11 +9,11 @@ async function handleGenerateNewShortURl(req, res) {
     shortId: shortId,
     redirectURL: body.url,
     visitHistory: [],
-    createdBy : req.user._id
+    createdBy: req.user._id,
   });
-return res.render("home", {
-  id : shortId
-})
+  return res.render("home", {
+    id: shortId,
+  });
   // return res.json({ id: shortId });
 }
 

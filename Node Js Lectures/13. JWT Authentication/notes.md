@@ -120,3 +120,73 @@ http://localhost:8000/url/analytics/wY9A0et7w
         }
     ]
 }
+
+
+
+
+
+
+
+Server Side Rendering with EJS :-
+
+we have 3 templating engine
+1.EJS  :- embeded java script
+2.PUG
+3.handlebars
+
+
+Advantage of using ejs :-
+
+we have a seprate file for each
+i can write all code and my serve is clean
+
+
+
+have to install ejs
+tell you express you are using ejs
+
+
+app.set("view engine", "ejs");
+<!--! for this we have to use path module  -->
+app.set("views", path.resolve("./views"));
+
+if i get req in "/test" then show my urls :-
+
+app.get("/test", async (req, res) => {
+  //! one way to render on server side
+  //! return res.end("<h1>Hello world</h1>");
+  //! using ejs
+  const allURLs = await URL.find({});
+  //! we can pass variable as well
+  //! how can i show ejs we can use forEach loop in ejs file
+  return res.render("home", {
+    urls: allURLs,
+  });
+});
+
+:-
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home page</title>
+  </head>
+  <body>
+    <h1>hey from server</h1>
+    <% urls.forEach(url => { %>
+    <li><%= url.shortId %></li>
+    <% }) %>
+  </body>
+</html>
+
+
+
+hey from server
+kPJw1atcg
+Srqckgd6R
+ynWgmJtXU
+pIw-nwmP7
+J6uYb0HCo
+wY9A0et7w
+

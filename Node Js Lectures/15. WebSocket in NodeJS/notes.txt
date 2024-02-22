@@ -1,0 +1,13 @@
+Socket io :-
+
+poling:- is overkilling 
+
+
+solutions is web WebSocket(just a protocol)
+
+client ==================> server
+
+        --http(req)-------> req accept (upgrade krdo ws mai)
+            oky
+        <----------
+
