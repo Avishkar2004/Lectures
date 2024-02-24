@@ -56,3 +56,141 @@ Transfer-Encoding : chunked
 
 
 Notes :-
+
+
+
+
+STREAM :-
+
+Streams are one of the fundamental concepts of Node.js. Streams are a type of data-handling methods and are used to read or write input into output sequentially. Streams are used to handle reading/writing files or exchanging information in an efficient way. The official Node.js documentation defines streams as “A stream is an abstract interface for working with streaming data in Node.js.” The stream module provides an API for implementing the stream interface. Examples of the stream object in Node.js can be a request to an HTTP server and process.stdout are both stream instances. In short, Streams are objects in Node.js that lets the user read data from a source or write data to a destination in a continuous manner. Accessing Streams:
+
+
+const stream = require('stream');
+
+
+Note: What makes streams powerful while dealing with large amounts of data is that instead of reading a file into memory all at once, streams actually read chunks of data, processing its content data without keeping it all in memory. Advantages of Streams over other data handling methods:
+
+1.Time Efficient:- We don’t have to wait until entire file has been transmitted. We can start processing data as soon as we have it.
+2.Memory Efficient:- We don’t have to load huge amount of data in memory before we start processing.
+
+
+Types of Streams in Node.js: There are namely four types of streams in Node.js.
+Writable: We can write data to these streams. Example: fs.createWriteStream().
+Readable: We can read data from these streams. Example: fs.createReadStream().
+Duplex: Streams that are both, Writable as well as Readable. Example: net.socket.
+Transform: Streams that can modify or transform the data as it is written and read. Example: zlib.createDeflate.
+
+
+Some Node APIs that uses streams are:
+net.Socket()
+process.stdin()
+process.stdout()
+process.stderr()
+fs.createReadStream()
+fs.createWriteStream()
+net.connect()
+http.request()
+zlib.createGzip()
+zlib.createGunzip()
+zlib.createDeflate()
+zlib.createInflate()
+
+Implementing a Readable Stream: We will read the data from inStream and echoing it to the standard output using process.stdout.
+
+
+// Sample JavaScript Code for creating 
+// a Readable Stream 
+// Accessing streams 
+const { Readable } = require('stream'); 
+  
+// Reading the data  
+const inStream = new Readable({ 
+    read() { } 
+}); 
+  
+// Pushing the data to the stream 
+inStream.push('GeeksForGeeks : '); 
+inStream.push( 
+    'A Computer Science portal for Geeks'); 
+  
+// Indicates that no more data is 
+// left in the stream 
+inStream.push(null); 
+  
+// Echoing data to the standard output 
+inStream.pipe(process.stdout); 
+
+output :-
+
+GeeksForGeeks : A Computer Science portal for Geeks 
+
+Implementing a Writable Stream: In the outStream, we simply console.log the chunk as a string. We also call the callback function to indicate success without any errors. We will read the data from inStream and echo it to the standard output using process.stdout.
+
+
+// Sample JavaScript Code for 
+// Writable Stream 
+// Accessing Streams 
+const { Writable } = require('stream'); 
+  
+// Whatever is passed in standard  
+// input is out streamed here. 
+const outStream = new Writable({ 
+  
+    // The Write function takes three  
+    // arguments 
+    // Chunk is for Buffer 
+    // Encoding is used in case we want 
+    // to configure the stream differently 
+    // In this sample code, Encoding is ignored  
+    // callback is used to indicate  
+    // successful execution 
+    write(chunk, encoding, callback) { 
+        console.log(chunk.toString()); 
+        callback(); 
+    } 
+  
+}); 
+  
+// Echo the data to the standard output 
+process.stdin.pipe(outStream); 
+Output:
+Hello Geeks
+
+
+
+
+
+in network tab => header => Transfer-Encoding:chunked:-
+
+Transfer-Encoding :- 
+The Transfer-Encoding header specifies the form of encoding used to safely transfer the payload body to the user.
+
+Transfer-Encoding is a hop-by-hop header, that is applied to a message between two nodes, not to a resource itself. Each segment of a multi-node connection can use different Transfer-Encoding values. If you want to compress data over the whole connection, use the end-to-end Content-Encoding header instead.
+
+When present on a response to a HEAD request that has no body, it indicates the value that would have applied to the corresponding GET message.
+
+Transfer-Encoding: chunked
+Transfer-Encoding: compress
+Transfer-Encoding: deflate
+Transfer-Encoding: gzip
+
+// Several values can be listed, separated by a comma
+Transfer-Encoding: gzip, chunked
+
+
+chunked :-
+
+Data is sent in a series of chunks. The Content-Length header is omitted in this case and at the beginning of each chunk you need to add the length of the current chunk in hexadecimal format, followed by '\r\n' and then the chunk itself, followed by another '\r\n'. The terminating chunk is a regular chunk, with the exception that its length is zero. It is followed by the trailer, which consists of a (possibly empty) sequence of header fields.
+
+
+compress :-
+
+A format using the Lempel-Ziv-Welch (LZW) algorithm. The value name was taken from the UNIX compress program, which implemented this algorithm. Like the compress program, which has disappeared from most UNIX distributions, this content-encoding is used by almost no browsers today, partly because of a patent issue (which expired in 2003).
+
+deflate :-
+
+Using the zlib structure (defined in RFC 1950), with the deflate compression algorithm (defined in RFC 1951).
+
+gzip :- 
+
+A format using the Lempel-Ziv coding (LZ77), with a 32-bit CRC. This is originally the format of the UNIX gzip program. The HTTP/1.1 standard also recommends that the servers supporting this content-encoding should recognize x-gzip as an alias, for compatibility purposes.
