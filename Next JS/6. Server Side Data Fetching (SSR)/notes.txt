@@ -1,0 +1,51 @@
+ssr :-
+data ko fetch krenge server pe uske baad hum page ko render krte hai server pe aur jo rended page hota hai hum usko server kr dete hai user ko aur user ko directly data dikhta hai
+
+
+
+make server folder 
+
+server/users.jsx
+
+
+const UserPage = (props) => {
+    console.log(props)
+    return (
+        <div>
+            <h4>
+                Users (SSR)
+                {props.data.users.map(user => <li key={user.id}>{user.firstName}</li>)}
+            </h4>
+        </div>
+    )
+}
+
+export const getServerSideProps = async () => {
+    const data = await (await fetch("https://dummyjson.com/users")).json()
+    return {
+        props: {
+            data
+        }
+    };
+}
+
+export default UserPage;
+
+
+you will se result on this page :-
+
+
+http://localhost:3000/server/users
+
+
+
+jo bhi tum task kroge vo server pr execute hoga uske baad jo return kroge vo tumahare comp pe available ho jayega
+
+
+why do server side rendering ?
+
+1. it fast
+2. user ko pata nhi lagega mere data kaha se fetch ho raha hai
+3. api keys ko hide kr sakta hu (automatically)
+4. ye pages indexable hote hai seo ke purpose se
+
