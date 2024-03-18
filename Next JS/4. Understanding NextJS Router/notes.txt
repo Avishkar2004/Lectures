@@ -1,0 +1,434 @@
+Routing in Next.js
+
+jo bhi mai file pages folder ke andr banata hu vo mera automatically route ban jata hai
+
+1.Simple Routing  :-
+- agr tu pages ke andr file banata eg :-
+pages/about
+
+this will show you :-
+whatever i have in my about page
+
+
+2. Nested Routing :-
+
+localhost:3000/user/avi (this is called nested routing)
+
+
+agr tune pages/user ke adr index file banai to vo sida usko root bana lega 
+if go to the localhost:3000/user
+
+Output :-
+http://localhost:3000/user
+
+
+agr tune pages/user/avi ke adr index file banai to vo sida usko root bana lega 
+if go to the localhost:3000/user/avi
+
+jo bhi content avi folder mai hoga vo show krega
+
+http://localhost:3000/user/avi
+
+This is Avi Page
+
+this is what we called nested routing 
+tum kitne bi folder bana sakte ho jinta marji chahe
+
+
+2. Dynamic Routing :-
+
+agr muje http://localhost:3000/user/avi
+
+avi ki jagar koi bhi name lana hai to mai na thodi har name ke liye ek folder banaunga uske liye muje dynamic routing use krni padegi
+
+avi ki jagah kuch bhi aa jaye lekin waha pe ek hi page render ho
+
+uske liye hame 
+1.user/index.js
+2.User/[username].js
+
+next js itni smart hai ki vo [username].js ke page pr kuch bhi aa sakta hai
+
+
+index.js file:-
+
+function UserPage() {
+  return (
+    <div>
+      <h1>This is User Page</h1>
+    </div>
+  );
+}
+
+export default UserPage;
+
+
+[username].js file :-
+
+function DynamicPage() {
+  return (
+    <div>
+      <h1>This is [username] Page</h1>
+    </div>
+  );
+}
+
+export default DynamicPage;
+
+
+http://localhost:3000/user/avi :- (tum avi ki jagah koi bhi name aur kuch bhi pass kara sakte ho)
+on this route im getting this  
+- This is [username] Page
+
+Mujhe abhi mai jis bhi user ka page khol raha hu vo [username] ke jagah print hona chahiye 
+so how can i do that
+
+1.
+import { useRouter } from "next/router";
+
+function DynamicPage() {
+  const { query } = useRouter(); // router is object
+  // console.log("Router", router);
+  return (
+    <div>
+      <h1>This is {query.name} Page</h1>
+    </div>
+  );
+}
+
+export default DynamicPage;
+
+
+2. 
+
+import { useRouter } from "next/router";
+
+function DynamicPage() {
+   const router = useRouter();
+  console.log("Router", router);
+  return (
+    <div>
+      <h1>This is a index page for {router.query.user}</h1>
+    </div>
+  );
+}
+
+export default DynamicPage;
+
+
+This is avi Page
+
+jo bhi tum {} bracket mai likhoge usko query.filename file ka name hai vo likhna pagega
+
+
+
+
+
+================================================================
+ab muje 
+localhost:3000/user/avi/setting banana hai tab :-
+
+Folder Str :-
+user/[username]/setting
+
+user => kuch bhi name => setting
+user/avi/setting
+
+// user => kuch bhi name => setting
+// user/avi/setting
+
+import { useRouter } from "next/router";
+
+const Page = () => {
+  const router = useRouter();
+  console.log("Router", router);
+  return (
+    <div>
+        {/* "username" bcoz that's our parent folder */}
+      <h1>This is setting page for Page for {router.query.username}</h1>
+    </div>
+  );
+};
+
+export default Page;
+
+
+http://localhost:3000/user/avishkar/setting
+
+This is setting page for Page for avishkar
+
+
+
+This all work when you write all code in pages folder
+
+
+
+================================================================
+opening setting page when i click on open setting page
+
+1. we are using inter polation
+
+
+user/[user]/index.js
+import { useRouter } from "next/router";
+function Page() {
+  const router = useRouter();
+  console.log("Router", router);
+
+  return (
+    <div>
+      <h1>This is a index page for {router.query.user}</h1>
+      <button onClick={(e) => router.push(`/user/${router.query.user}/setting`)}>Open Setting Page</button>
+    </div>
+  );
+}
+
+export default Page;
+
+
+http://localhost:3000/user/avi/setting
+
+
+
+
+2. we are using path name
+
+1.
+import { useRouter } from "next/router";
+function Page() {
+  const router = useRouter();
+  console.log("Router", router);
+
+  return (
+    <div>
+      <h1>This is a index page for {router.query.user}</h1>
+      <button
+        onClick={(e) =>
+          router.push({
+            pathname: "/user/[user]/setting",
+            query: { user: "john" },
+          })
+        }
+      >
+        Open Setting Page
+      </button>
+    </div>
+  );
+}
+
+export default Page;
+
+
+this will automatically send you to the johns setting page
+
+http://localhost:3000/user/john/setting
+
+
+2.
+
+import { useRouter } from "next/router";
+function Page() {
+  const router = useRouter();
+  console.log("Router", router);
+
+  return (
+    <div>
+      <h1>This is a index page for {router.query.user}</h1>
+      <button
+        onClick={(e) =>
+          router.push({
+            pathname: "/user/[user]/setting",
+            query: { user: router.query.user },
+          })
+        }
+      >
+        Open Setting Page
+      </button>
+    </div>
+  );
+}
+
+export default Page;
+
+
+http://localhost:3000/user/Jyoti/setting
+
+This is setting page for Page for Jyoti
+
+
+push :- history mai push karna
+
+
+what if user ki history hi create na hoga
+
+we are using for this router.replace
+
+
+
+import { useRouter } from "next/router";
+function Page() {
+  const router = useRouter();
+  console.log("Router", router);
+
+  return (
+    <div>
+      <h1>This is a index page for {router.query.user}</h1>
+      <button
+        onClick={(e) =>
+          router.push({
+            pathname: "/user/[user]/setting",
+            query: { user: router.query.user },
+          })
+        }
+      >
+        Open Setting Page
+      </button>
+      <div>
+        <button onClick={(e) => router.replace("/")}>Go TO Home Page</button>
+      </div>
+    </div>
+  );
+}
+
+export default Page;
+
+
+
+
+================================================================
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+
+const useUser = () => ({ user: null, loading: false });
+
+function Page() {
+  const router = useRouter();
+  const user = useUser();
+
+  console.log("Router", router);
+
+  useEffect(() => {
+    if (user.user == null) {
+      router.replace("/");
+    }
+  }, [router, user.user]);
+
+  return (
+    <div>
+      <h1>This is a index page for {router.query.user}</h1>
+      <button
+        onClick={(e) =>
+          router.push({
+            pathname: "/user/[user]/setting",
+            query: { user: router.query.user },
+          })
+        }
+      >
+        Open Setting Page
+      </button>
+      <div>
+        <button onClick={(e) => router.replace("/")}>Go TO Home Page</button>
+      </div>
+    </div>
+  );
+}
+
+export default Page;
+
+
+tum localhost:3000/user/avi 
+page kr upr ja nhi pa rahe ho kyu ki tumhara user null hai
+
+
+================================================================
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+
+const useUser = () => ({ user: { name: "Avishkar" }, loading: false });
+
+function Page() {
+  const router = useRouter();
+  const user = useUser();
+
+  console.log("Router", router);
+
+  useEffect(() => {
+    if (user.user == null) {
+      router.replace("/");
+    }
+  }, [router, user.user]);
+
+  return (
+    <div>
+      <h1>This is a index page for {router.query.user}</h1>
+      <button
+        onClick={(e) =>
+          router.push({
+            pathname: "/user/[user]/setting",
+            query: { user: router.query.user },
+          })
+        }
+      >
+        Open Setting Page
+      </button>
+      <div>
+        <button onClick={(e) => router.replace("/")}>Go TO Home Page</button>
+      </div>
+    </div>
+  );
+}
+
+export default Page;
+
+
+http://localhost:3000/user/avi
+
+you can go the page now 
+
+
+================================================
+
+Reload Function :-
+
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+
+const useUser = () => ({ user: { name: "Avishkar" }, loading: false });
+
+function Page() {
+  const router = useRouter();
+  const user = useUser();
+
+  console.log("Router", router);
+
+  useEffect(() => {
+    if (user.user == null) {
+      router.replace("/");
+    }
+  }, [router, user.user]);
+
+  return (
+    <div>
+      <h1>This is a index page for {router.query.user}</h1>
+      <button
+        onClick={(e) =>
+          router.push({
+            pathname: "/user/[user]/setting",
+            query: { user: router.query.user },
+          })
+        }
+      >
+        Open Setting Page
+      </button>
+      <div>
+        <button onClick={(e) => router.replace("/")}>Go TO Home Page</button>
+        <button onClick={(e) => router.reload()}>Reload</button>
+      </div>
+    </div>
+  );
+}
+
+export default Page;
+
+when u click on Reload page will Reload
+
