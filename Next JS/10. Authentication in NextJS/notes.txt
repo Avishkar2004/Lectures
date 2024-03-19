@@ -1,0 +1,69 @@
+we are using next-auth for Authentication 
+
+for Authentication you should have server 
+
+in next js we have build in server 
+
+
+make 1 file :-
+in pages/api/auth/[...nextauth].js
+
+
+import NextAuth from "next-auth";
+import GithubPrivider from "next-auth/providers/github";
+
+export const authOptions = {
+  providers: [
+    GithubPrivider({
+      //go to the github.com => setting => Developer Settings => oAuth Apps => Register a new Application => application name(Youtube App) => Homepage URl ("http://localhost:3000/")  => Authorization callback URL ("http://localhost:3000/") => then u will see this (Client ID 5382b08e60cccd428018) => click on generate secret to generate secret id
+      clientId: "5382b08e60cccd428018",
+      clientSecret: "f799dcc58540278d293249d86dc2f9805fc78a91",
+    }),
+  ],
+};
+
+export default NextAuth(authOptions);
+
+
+
+then =>
+
+
+import { SessionProvider } from "next-auth/react";
+import "@/styles/globals.css";
+
+export default function App({ Component, pageProps }) {
+  return (
+    <SessionProvider session={pageProps.session}>
+      <Component {...pageProps} />;
+    </SessionProvider>
+  );
+}
+
+
+then =>
+
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import styles from "@/styles/Home.module.css";
+import { useSession, signIn, signOut } from "next-auth/react";
+
+const inter = Inter({ subsets: ["latin"] });
+
+export default function Home() {
+  const session = useSession();
+  console.log(session);
+  if (session.data === null) {
+    return <button onClick={signIn}>Login</button>
+  }
+  return (
+    <div className={styles.main}>
+      <h2>Hello {session?.data?.user?.name}</h2>
+      <button onClick={signOut}>Log Out</button>
+    </div>
+  );
+}
+
+
+
