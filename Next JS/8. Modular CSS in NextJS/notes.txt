@@ -1,0 +1,39 @@
+Modular CSS in NextJS  :-
+
+build in support we can use global css, sass and modular css
+
+global Css :-
+
+pure tumhare web/page pe apply hoti hai
+
+in style folder we have globals.css and Home.module.css
+
+
+diff :-
+
+global css :-
+tunmahre pure page or web pe apply hogi
+
+font , color hum global  css mai rakh sakte hai
+
+global css use kaise ho rahi hai :-
+
+if you go to the _app.js  you will see globals.css is imported
+
+
+2. 
+modular css :-
+
+hum ek particular page/component ke liye likte hai
+
+
+you have to write module in css file
+
+
+what the benefit of using modular.css :-
+
+jab ye particular component unmount (screen se hat jayega) tab particular css unload ho jayegi aur jab ye  component wapas aayega screen pe tab ye wali css ko wapas le aayega to is se overwrite ke chanses kam ho jayenge
+
+
+ye css compile hoti hai iski classes runtime mai generate hoti hai and next js isko automatically assing kar deti hai
+
