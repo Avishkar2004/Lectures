@@ -6,7 +6,7 @@
 Q. what causes imbalance of EC2 ?
 - if we add or remove some subnet/AZ from Autoscaling group
 -if we manually request of EC2 termination from our ASG(Autoscaling group)
-- an Az that did not have enough EC2 capacity new has enough capacity and it is only of one Autoscaling group AZ 
+- an Az that did not have Enough EC2 capacity new has enough capacity and it is only of one Autoscaling group AZ 
 - we can attack a running EC2 instance to an Autoscaling group by using aws console or CLI, if the below conditions are :-
 
 - instance must be in running state (not terminated or stopped)
