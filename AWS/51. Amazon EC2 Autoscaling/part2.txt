@@ -11,7 +11,7 @@ Q. what causes imbalance of EC2 ?
 
 - instance must be in running state (not terminated or stopped)
 - AMI used to launch the EC2 shell Exist
-- * instance is not part of another Autoscaling group.
+- * instance is not part of another Autoscaling Group.
 - * instance is in the same size AZ of the name group.
 
 - If the existing EC2 instance under the Autoscaling group, plus the one to be needed, exceed the max capacity of the Autoscaling group, the request will fail, EC2 instance would not be added.
