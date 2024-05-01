@@ -26,7 +26,7 @@ Q. what causes imbalance of EC2 ?
 - the elastic load balancer must be in the same region as the Autoscaling group
 - once u do this , only EC2 instance existing or added by the Autoscaling group will be Automatically registered with the autoscalling group defined ELB
 - u do not need to register those instance manually on the autoscalling group defined ELB
--instances and the ELB must be in the same VPC
+-instances and the ELB must be in The same VPC
 - autoscalling classfies its EC2 instances health status as either healthy or unhealthy
 - by default as uses EC2 status checks only to determine the health status of an instance
 - when u have one or more ELB defined with the autoscalling group, u can configure autoscalling to use "both" the EC2 health check and the ELB health check to determine the instances health check
