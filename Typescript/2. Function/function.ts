@@ -13,7 +13,7 @@ let loginUser = (name: string, email: string, isPaid: boolean = false) => {};
 addTwo(5);
 getUpper("4");
 signUpUser("avi", "avi@gmail.com", false);
-loginUser("AVI", "avi@gmail.com")
+loginUser("AVI", "avi@gmail.com")vv
 
 
 export {};
