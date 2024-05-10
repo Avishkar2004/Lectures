@@ -1,6 +1,6 @@
 connect backend to Frontend :- 
 
-backend :-
+Backend :-
 
 const db = mysql2.createPool({
   host: "localhost",

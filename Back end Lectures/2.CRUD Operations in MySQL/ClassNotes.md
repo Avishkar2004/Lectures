@@ -1,9 +1,9 @@
 run xampp
 open terminal in xampp :-
 
-run command :-
+run this command to run xampp server :-
 
-mysql -h 127.0.0.1 -u root
+mysql -h 127.0.0.1 -u root 
 
 -h : host
 -u : root

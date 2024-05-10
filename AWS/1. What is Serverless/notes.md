@@ -1,6 +1,6 @@
 what is serverless ?
 
-backend engineer :- writing rest(Representational State Transfer Application Programming Interface) api
+backend engineer :- writing REST API(Representational State Transfer Application Programming Interface)
 
 serverless kisi bhi cluod provider mai hota hai
 
