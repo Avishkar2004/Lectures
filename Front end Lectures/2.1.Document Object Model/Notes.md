@@ -1,548 +1,235 @@
-Agenda:-
-1.DOM
-what:-
-Why:-
-How to access the dom element:-
-DOM Basic:-
-HTML DOM element:-
+The Document Object Model (DOM) is the data representation of the objects that comprise the structure and content of a document on the web. This guide will introduce the DOM, look at how the DOM represents an HTML document in memory and how to use APIs to create web content and applications.
 
-DOM:-
-=> Document Object model
-=>DOM - Tree like representation of your HTML Document. - Each element from HTML document called as "node" in the DOM tree - Collection of nodes is also called as DOM - the tree like a str is in the form of a hierarchy model
+What is the DOM?
+The Document Object Model (DOM) is a programming interface for web documents. It represents the page so that programs can change the document structure, style, and content. The DOM represents the document as nodes and objects; that way, programming languages can interact with the page.
 
-      <html>
-    <head>
-        <title>DOM Tree</title>
-    </head>
-    <body>
-        <p style="color:red;">hello</p>
-        <h1>how are you</h1>
-    </body>
 
-</html>
+A web page is a document that can be either displayed in the browser window or as the HTML source. In both cases, it is the same document but the Document Object Model (DOM) representation allows it to be manipulated. As an object-oriented representation of the web page, it can be modified with a scripting language such as JavaScript.
 
-How to access the DOM element:-
-=> The document node is the entry point to a dom tree
-There are many method which is provided by the document class through which you can access the element.
-array=[1,2,3,4]
-array.length is a property
-or
-array.toString() is a method
+For example, the DOM specifies that the querySelectorAll method in this code snippet must return a list of all the <p> elements in the document:
 
-:-you can acess the data
-getElementById(is atribute)
-getElementByClassName()
-getElementByTagName()
-queryselector
+const paragraphs = document.querySelectorAll("p");
+// paragraphs[0] is the first <p> element
+// paragraphs[1] is the second <p> element, etc.
+alert(paragraphs[0].nodeName);
 
-in j.s are how many apparoches are there:-
-there are 5 apparoches for implementing j.s in page.
-1.External script
-2.Internal script
-3 sub categary
-(i) inside the body
-(ii) inside the head
-(iii) inside the html element.
-5th apparoches is not find over here they are find in react.js
 
-success full embeded in j.s file
+All of the properties, methods, and events available for manipulating and creating web pages are organized into objects. For example, the document object that represents the document itself, any table objects that implement the HTMLTableElement DOM interface for accessing HTML tables, and so forth, are all objects.
 
-<script src="index.js"></script>
+The DOM is built using multiple APIs that work together. The core DOM defines the entities describing any document and the objects within it. This is expanded upon as needed by other APIs that add new features and capabilities to the DOM. For example, the HTML DOM API adds support for representing HTML documents to the core DOM, and the SVG API adds support for representing SVG documents.
 
-you can access html value in j.s file
-console.log(
-document.getElementById("myId").value //hello will be printed in the console
-)
+DOM and JavaScript :-
 
-.innerHTML to access the content it will printing hello
+The previous short example, like nearly all examples, is JavaScript. That is to say, it is written in JavaScript, but uses the DOM to access the document and its elements. The DOM is not a programming language, but without it, the JavaScript language wouldn't have any model or notion of web pages, HTML documents, SVG documents, and their component parts. The document as a whole, the head, tables within the document, table headers, text within the table cells, and all other elements in a document are parts of the document object model for that document. They can all be accessed and manipulated using the DOM and a scripting language like JavaScript.
 
-if we use j.s to manipulate the style content then it will be a inline apparoche
+The DOM is not part of the JavaScript language, but is instead a Web API used to build websites. JavaScript can also be used in other contexts. For example, Node.js runs JavaScript programs on a computer, but provides a different set of APIs, and the DOM API is not a core part of the Node.js runtime.
 
-<input/> => tag is used to provide input
-=> it is used to collect the input from the users.
-=> 20+ diff types are available.
-<input type="(text {widely use}),password,document,number,DOB,gmail id,upload the document"/>
 
-what is DOM ?
-=> The Document object model (DOM) is a programming interface that lets us add, edit and delete component from a document.
-=>The DOM views an HTML documnet as a tree of nodes. A nodes represents an html element.
+The DOM was designed to be independent of any particular programming language, making the structural representation of the document available from a single, consistent API. Even if most web developers will only use the DOM through JavaScript, implementations of the DOM can be built for any language, as this Python example demonstrates:
 
-why DOM is require ?
-=>The DOM is what allows you to change the content and design on structure via j.s.
-=>This is bcoz it gives you the ability to add new or modify existing elements in or it in your script.Which can speed up the task(like dynamically adding iframe) and becrease load times for page using it.
+Accessing the DOM :-
 
-why DOM Covers ?
-=>The DOM API allows full control, both querying and altering the DOM, and you have pratically full supports in the API to leverages all features provided by the HTML markup.
-=>First of all, it allows access to a certain part of the documents(the HTML markup).you can access a certain markup element using its identifier, or a collection of element by their names,class type(according to the values of the element's class attributes).
-eg:-
-const element = document.getElementsByTagName("h1");
+You don't have to do anything special to begin using the DOM. You use the API directly in JavaScript from within what is called a script, a program run by a browser.
 
-=> you can query the metadata of a documnets including it's URL, character set, last modification data,etc.
-console.log(document.lastModified)
-ALmost every intercation between a user and a web page is build in DOM. when you click a component of a page,a node of the DOM hierarchy receives the events and response by executing some code.
+When you create a script, whether inline in a <script> element or included in the web page, you can immediately begin using the API for the document or window objects to manipulate the document itself, or any of the various elements in the web page (the descendant elements of the document). Your DOM programming may be something as simple as the following example, which displays a message on the console by using the console.log() function:
 
-=> web pages that keep the UI responsive while running queries against the server in the background use the DOM to update the page when result arrive, too.
-Eg:-
-If the viewport is less than, or equal to, 700 pixels wide, change the background color to yellow. If it is greater than 700, change it to pink
-
-function myFunction(x) {
-if (x.matches) { // If media query matches
-document.body.style.backgroundColor = "yellow";
-} else {
-document.body.style.backgroundColor = "pink";
-}
-}
-
-var x = window.matchMedia("(max-width: 700px)")
-myFunction(x) // Call listener function at run time
-x.addListener(myFunction) // Attach listener function on state changes
-=> many pages generate additional UI component at the clinet-side, right after the page is loaded, such as thumbnails,quick links, table of content, or other elements that hepls with page navigation. The script behind these activities also utilize the DOM.
-
-=>DOMContentLoaded - the browser fully loaded HTML, and the DOM tree is build, but external resourced like pictures <img> and stylesheets may not yet have loaded.
-eg:-
-function ready() {
-alert('DOM is ready');
-
-    // image is not yet loaded (unless it was cached), so the size is 0x0
-    alert(`Image size: ${img.offsetWidth}x${img.offsetHeight}`);
-}
-
-document.addEventListener("DOMContentLoaded", ready);
-=> moving charts, animated figures,interactive footer and banner all leaverage the DOM.
-
-DOM Basics :- THe DOM represents an html documents as a heiarchy of nodes.consider as a following documents.
-
-<html>
-    <head>
-        <title>JavaScript DOM</title>
-    </head>
-    <body>
-        <p>Hello DOM!</p>
-    </body>
-</html>.
-
-in the DOM tree, the document is the root node. The root node has one child node which is the <html> element. The <html> element is called the document element.
-Each document can have only one document element. In an HTML document. Each markup can be represented by a node in the tree.
-
-Node and Element:-
-a node is a generic name of any object in the dom tree. it can be in build-in dom element such as the document.or it can be any HTML tag specified in the HTML documents like <div> or <p>.
-
-An element is a node with a specific node type Node.ELEMENT_NODE.
-in other words,the node is the generic type of element.
-
-Note:- that the getElementByid() and querySelector() return an object with the element type while getElementsByTagName() or querySelectorAll() return nodelist which is a collection of nodes.
-
-Node Relationships:-
-any node has relationships to the other nodes in the DOM tree.
-For example, <body> is a child node of the <html> node, and <html> is the parent of the <body> node.
-
-HTML DOM Elements :-
-when the web page is loaded the browser creates a documents objects model of the page.
-The HTML DOM model is constructed as a tree of Objects:
-
-The element object:-
-in the HTML DOm, the element object represents an html element, likes P,DIV, A, TABLE, or any other HTML element. each element object has certain properties and method associated with it.
-
-DOM Attributes/Properties :-
-The values you can set or change the HTML elements are called HTML DOM Property.(go to the website)
-
-DOM Methods:-
-The "actions" you perform on html elements are called html DOM Methods.(go to the website)
-
-Accessing DOM Elements:-
-The DOM API provides us with some methods through which we can access the elements.
-
-getElementByid() method:The document.getElementById() method returns an Element object that represents an HTML element with an id that matches a specified string.
-=> if the document has no element with the specific id it return null.
-
-<html>
-    <head>
-        <title>JavaScript getElementById() Method</title>
-    </head>
-    <body>
-        <p id="message">A paragraph</p>
-    </body>
-</html>
-The document contains a <p>element that has the id attribute with the value message:
-
-const p = document.getElementById('message');
-console.log(p);
-OUTPUT:
-
-<p id="message">A paragraph</p>
-
-2.getElementsByName() method:- the getElementsByName() accepts a name which is the value of the same attributes of elements and return a live nodelist of element.
-=> it return collection of element is live.
-Eg:-
-
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <title>JavaScript getElementsByName Demo</title>
-</head>
-
-<body>
-    <p>Please rate the service:</p>
-    <p>
-        <label for="very-poor">
-            <input type="radio" name="rate" value="Very poor" id="very-poor"> Very poor
-        </label>
-        <label for="poor">
-            <input type="radio" name="rate" value="Poor" id="poor"> Poor
-        </label>
-        <label for="ok">
-            <input type="radio" name="rate" value="OK" id="ok"> OK
-        </label>
-        <label for="good">
-            <input type="radio" name="rate" value="Good"> Good
-        </label>
-        <label for="very-good">
-            <input type="radio" name="rate" value="Very Good" id="very-good"> Very Good
-        </label>
-    </p>
-    <p>
-        <button id="btnRate">Submit</button>
-    </p>
-    <p id="output"></p>
-    <script>
-        let btn = document.getElementById('btnRate');
-        let output = document.getElementById('output');
-
-        btn.addEventListener('click', () => {
-            let rates = document.getElementsByName('rate');
-            rates.forEach((rate) => {
-                if (rate.checked) {
-                    output.innerText = `You selected: ${rate.value}`;
-                }
-            });
-        });
-    </script>
-
+<body onload="console.log('Welcome to my home page!');">
+  …
 </body>
-</html>
 
-3.getElementByTagName() method:-
-the getElementByTagName() is a method of the document object or a specific DOM element.
+As it is generally not recommended to mix the structure of the page (written in HTML) and manipulation of the DOM (written in JavaScript), the JavaScript parts will be grouped together here, and separated from the HTML.
 
-3.getElementByClassName() method:-
-The getElementByClassName() method return an array-like of object of the child element with a specified class name.
+For example, the following function creates a new h1 element, adds text to that element, and then adds it to the tree for the document:
 
-let elements = document.getElementsByClassName(names);
-Eg:-
-
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript getElementsByClassName</title>
-</head>
-<body>
-    <header>
-        <nav>
-            <ul id="menu">
-                <li class="item">HTML</li>
-                <li class="item">CSS</li>
-                <li class="item highlight">JavaScript</li>
-                <li class="item">TypeScript</li>
-            </ul>
-        </nav>
-        <h1>getElementsByClassName Demo</h1>
-    </header>
-    <section>
-        <article>
-            <h2 class="secondary">Example 1</h2>
-        </article>
-        <article>
-            <h2 class="secondary">Example 2</h2>
-        </article>
-    </section>
-</body>
-</html>
-
-let menu = document.getElementById('menu');
-let items = menu.getElementsByClassName('item');
-
-let data = [].map.call(items, item => item.textContent);
-
-console.log(data);
-
-OUTPUT:-
-['HTML', 'CSS', 'JavaScript', 'TypeScript']
-
-4.querySelector() and querySelectorAll method:-
-The querySelector() is a method of that of the element interface.the querySelector method allows you to select the first element that matches one or more css selector.
-
-let element = parentNode.querySelector(selector);
-Besides the querySelector(), you can use the querySelectorAll() method to select the all element that match a css selector or a group of css selector.
-Eg:-
-let elementList = parentNode.querySelectorAll(selector);
-
-Basic Selector:-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>querySelector() Demo</title>
-</head>
-<body>
-    <header>
-        <div id="logo">
-            <img src="img/logo.jpg" alt="Logo" id="logo">
-        </div>
-        <nav class="primary-nav">
-            <ul>
-                <li class="menu-item current"><a href="#home">Home</a></li>
-                <li class="menu-item"><a href="#services">Services</a></li>
-                <li class="menu-item"><a href="#about">About</a></li>
-                <li class="menu-item"><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <h1>Welcome to the JS Dev Agency</h1>
-
-        <div class="container">
-            <section class="section-a">
-                <h2>UI/UX</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem placeat, atque accusamus voluptas
-                    laudantium facilis iure adipisci ab veritatis eos neque culpa id nostrum tempora tempore minima.
-                    Adipisci, obcaecati repellat.</p>
-                <button>Read More</button>
-            </section>
-            <section class="section-b">
-                <h2>PWA Development</h2>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni fugiat similique illo nobis quibusdam
-                    commodi aspernatur, tempora doloribus quod, consectetur deserunt, facilis natus optio. Iure
-                    provident labore nihil in earum.</p>
-                <button>Read More</button>
-            </section>
-            <section class="section-c">
-                <h2>Mobile App Dev</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi eos culpa laudantium consequatur ea!
-                    Quibusdam, iure obcaecati. Adipisci deserunt, alias repellat eligendi odit labore! Fugit iste sit
-                    laborum debitis eos?</p>
-                <button>Read More</button>
-            </section>
-        </div>
-    </main>
-    <script src="js/main.js"></script>
-
-</body>
-</html>
-
-1.Universal Selector :-
-The universal selector is donated by \* that mathes all element of any type:-
-
-The following example uses the querySelector() selects the first element in the document:
-Eg:-
-let element = document.querySelector('\*');
-
-this select all elements in the document:
-Eg:-
-let elements = document.querySelectorAll('\*');
-
-2.Type Selector :-
-to select element by node name, you use the type selector
-eg:-
-let firstHeading = document.querySelector('h1');
-
-3. Class Selector:-
-   To find the element with a given css class, you use the class selector syntax .className
-   eg:-
-   let note = document.querySelector('.menu-item');
-
-4.ID selector:-
-To select an element based on the value of it's id, you use the id selector syntax #id
-Eg:-
-let logo = document.querySelector('#logo');
-
-5.Attribute selector:-
-To select all element that have a given attribute, you use one of the following attribute selector syntaxes:-
-[attribute] [attribute=value] [attribute~=value] [attribute|=value] [attribute^=value] [attribute$=value] [attribute*$*=value]
-
-Eg:-
-let autoplay = document.querySelector('[autoplay]');
-
-6.Grouping Selectors :-
-To group multiple selector, you use the following syntax :-
-selector,selector,...
-The selector list will match any element with one of the selector in one group.
-eg:-
-let elements = document.querySelectorAll('div, p');
-
-Combinators
-1.Descendant combinator:
-To find the descendant of a node, you use the space ( ) descendant combinator syntax.
-=> selector selector
-Eg:-
-let links = document.querySelector('p a');
-
-2.Child Combinator :-
-The > child combinator finds all elements that are direct children of the first element :
-selector > selector
-Eg:-
-let listItems = document.querySelectorAll('ul > li');
-
-3.General sibling combinator :-
-The ~ combinator selects sibling that share the same parent:-
-selector ~ selector
-Eg:-
-let links = document.querySelectorAll('p ~ a');
-
-4.Adjacent Sibling:-
-The + adjacent sibling combinator select adjacent sibling:
-selector + selector
-Eg:-
-let links = document.querySelectorAll('h1 + a');
-
-Pseudo :-
-[1.] pseudo classes :-
-The : pseudo matches elements based on their states: element:state
-
-For example, the li:nth-child(2) selects the second <li> element in a list:
-let listItem = document.querySelectorAll('li:nth-child(2)')
-
-[2.]Pseudo Element :-
-The :: represents entities that are not included in the documents.
-Eg:-
-let links = document.querySelector('p::first-line');
-
-Get the parentNode:
-To get the parent node of a specified node in the DOM tree, you use the parentNode property:
-The Document and DocumentFragment nodes do not have a parent. Therefore, the parentNode will always be null.
-Eg:-
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>JavaScript parentNode</title>
-</head>
-<body>
-    <div id="main">
-        <p class="note">This is a note!</p>
-    </div>
-
+  <head>
     <script>
-        let note = document.querySelector('.note');
-        console.log(note.parentNode);
+      // run this function when the document is loaded
+      window.onload = () => {
+        // create a couple of elements in an otherwise empty HTML page
+        const heading = document.createElement("h1");
+        const headingText = document.createTextNode("Big Head!");
+        heading.appendChild(headingText);
+        document.body.appendChild(heading);
+      };
     </script>
-
-</body>
+  </head>
+  <body></body>
 </html>
 
-Get the children:-
-1.To get the first child element of a specified element, you use the firstChild property of the element.Or to get the first child with the Element node only, you can use the firstElementChild property.
-2.To get the last child element of a node, you use the lastChild property.If you want to select only the last child element with the element node type, you use the lastElementChild property.
-Eg:-
+Fundamental data types :-
 
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>JS Get Child Elements</title>
-</head>
-<body>
-  <ul id="menu">
-    <li class="first">Home</li>
-    <li>Products</li>
-    <li class="current">Customer Support</li>
-    <li>Careers</li>
-    <li>Investors</li>
-    <li>News</li>
-    <li class="last">About Us</li>
-  </ul>
-</body>
-</html>
+This page tries to describe the various objects and types in simple terms. But there are a number of different data types being passed around the API that you should be aware of.
 
-1.First Child:
-The following script shows the first child of the #menu element:
+Note: Because the vast majority of code that uses the DOM revolves around manipulating HTML documents, it's common to refer to the nodes in the DOM as elements, although strictly speaking not every node is an element.
 
-let content = document.getElementById('menu');
-let firstChild = content.firstChild.nodeName;
-console.log(firstChild);
+Data Type :-
 
-2.Last Child :-
-The following code returns the list item which is the last child element of the menu:
+1.Document :-
+When a member returns an object of type document (e.g., the ownerDocument property of an element returns the document to which it belongs), this object is the root document object itself. The DOM document Reference chapter describes the document object.
 
-let content = document.getElementById('menu');
-let lastChild = content.lastChild.nodeName;
-console.log(firstChild);
+2. Node :-
+Every object located within a document is a node of some kind. In an HTML document, an object can be an element node but also a text node or attribute node.
 
-3.Get All Child Elements :-
+3. Element :-
+The element type is based on node. It refers to an element or a node of type element returned by a member of the DOM API. Rather than saying, for example, that the document.createElement() method returns an object reference to a node, we just say that this method returns the element that has just been created in the DOM. element objects implement the DOM Element interface and also the more basic Node interface, both of which are included together in this reference. In an HTML document, elements are further enhanced by the HTML DOM API's HTMLElement interface as well as other interfaces describing capabilities of specific kinds of elements (for instance, HTMLTableElement for <table> elements).
 
-The following example selects all child elements of the element with the Id main:
 
-let menu = document.getElementById('menu');
-let children = menu.children;
-console.log(children);
+4.NodeList :-
+A nodeList is an array of elements, like the kind that is returned by the method document.querySelectorAll(). Items in a nodeList are accessed by index in either of two ways:
+list.item(1)
+list[1]
+These two are equivalent. In the first, item() is the single method on the nodeList object. The latter uses the typical array syntax to fetch the second item in the list.
 
-[3.]Get the sibling :-
-To get the next sibling of an element, you use the next Element Sibling attribute.
 
-The next Element Sibling returns null if the specified element is the first one in the list.
-Eg of nextElementSibling property :-
+5. Attr :-
+When an attribute is returned by a member (e.g., by the createAttribute() method), it is an object reference that exposes a special (albeit small) interface for attributes. Attributes are nodes in the DOM just like elements are, though you may rarely use them as such.
 
-<ul id="menu">
-    <li>Home</li>
-    <li>Products</li>
-    <li class="current">Customer Support</li>
-    <li>Careers</li>
-    <li>Investors</li>
-    <li>News</li>
-    <li>About Us</li>
-</ul>
+6.NamedNodeMap	:-
+A namedNodeMap is like an array, but the items are accessed by name or index, though this latter case is merely a convenience for enumeration, as they are in no particular order in the list. A namedNodeMap has an item() method for this purpose, and you can also add and remove items from a namedNodeMap.
 
-let current = document.querySelector('.current');
-let nextSibling = current.nextElementSibling;
-console.log(nextSibling);
+There are also some common terminology considerations to keep in mind. It's common to refer to any Attr node as an attribute, for example, and to refer to an array of DOM nodes as a nodeList. You'll find these terms and others to be introduced and used throughout the documentation.
 
-OUTPUT:
+DOM interfaces :-
 
-<li>Careers</li>
+This guide is about the objects and the actual things you can use to manipulate the DOM hierarchy. There are many points where understanding how these work can be confusing. For example, the object representing the HTML form element gets its name property from the HTMLFormElement interface but its className property from the HTMLElement interface. In both cases, the property you want is in that form object.
 
-To get the previous siblings of an element, you use the previous Element Sibling attribute.
+Interfaces and objects :-
+Many objects implement several different interfaces. The table object, for example, implements a specialized HTMLTableElement interface, which includes such methods as createCaption and insertRow. But since it's also an HTML element, table implements the Element interface described in the DOM Element Reference chapter. And finally, since an HTML element is also, as far as the DOM is concerned, a node in the tree of nodes that make up the object model for an HTML or XML page, the table object also implements the more basic Node interface, from which Element derives.
 
-previous Element Sibling property returns null if the current element is the first one in the list.
+When you get a reference to a table object, as in the following example, you routinely use all three of these interfaces interchangeably on the object, perhaps without knowing it.
 
-Eg of previousElementSibling :-
-let current = document.querySelector('.current');
-let prevSibling = current.previousElementSibling;
-console.log(prevSibling);
+const table = document.getElementById("table");
+const tableAttrs = table.attributes; // Node/Element interface
+for (let i = 0; i < tableAttrs.length; i++) {
+  // HTMLTableElement interface: border attribute
+  if (tableAttrs[i].nodeName.toLowerCase() === "border") {
+    table.border = "1";
+  }
+}
+// HTMLTableElement interface: summary attribute
+table.summary = "note: increased border";
 
-OUTPUT:
 
-<li>Products</li>
+Core interfaces in the DOM :-
+This section lists some of the most commonly-used interfaces in the DOM. The idea is not to describe what these APIs do here but to give you an idea of the sorts of methods and properties you will see very often as you use the DOM. These common APIs are used in the longer examples in the DOM Examples chapter at the end of this book.
 
-:-Interview Questions
-What are the HTML DOM methods involved?
+The document and window objects are the objects whose interfaces you generally use most often in DOM programming. In simple terms, the window object represents something like the browser, and the document object is the root of the document itself. Element inherits from the generic Node interface, and together these two interfaces provide many of the methods and properties you use on individual elements. These elements may also have specific interfaces for dealing with the kind of data those elements hold, as in the table object example in the previous section.
 
-The following are HTML DOM methods that are mostly used.
+The following is a brief list of common APIs in web and XML page scripting using the DOM.
 
-getElementById(idName) = this method allows you to access or find an element associated with id name defined in parenthesis(). Example – document.getElementById(“demo”)
-getElementsByClassName(className) – this method allows you to access or find elements associated with className defined in parenthesis(). Example – document.getElementsByClassName(“main”)
-getElementsByTagName(tagName) – this method allows you to access or find elements associated with tagName defined in parenthesis(). Example – document.getElementsByTagName(“p”)
-appendChild(element) – this method allows you to add a new element(node) in DOM(Document Object Model) tree structure as the last child of a node. Example – document.appendChild(element)
-removeChild(element) – this method allows you to remove a child element(node) in DOM(Document Object Model) tree structure. Example – document.appendChild(element)
-createChild(element) – this method allows you to create an element(node) in DOM(Document Object Model) tree structure. Example – document.createElement(element)
-replaceChild(new, old) – this method allows you to replace an old element with a new element in DOM(Document Object Model) tree structure. Example – document.replaceChild(new, old)
 
-How can I find the number of elements (length) in the HTML collection?
+document.querySelector()
+document.querySelectorAll()
+document.createElement()
+Element.innerHTML
+Element.setAttribute()
+Element.getAttribute()
+EventTarget.addEventListener()
+HTMLElement.style
+Node.appendChild()
+window.onload
+window.scrollTo()
 
-To find the number of elements in HTML collection, we have to use length properties.
+Setting text content :-
 
-<body>
-<p>This is paragraph one. </p>
-<p>  This is paragraph two. </p>
-<p>  This is paragraph three. </p>
-<p id=”demo”></p>
-<script>
-var x = document.getElementsByTagName(“p”);
-document.getElementById(“demo”).innerHTML = x.length;
-</script>
-</body>
-The output will be –
-4
+This example uses a <div> element containing a <textarea> and two <button> elements. When the user clicks the first button we set some text in the <textarea>. When the user clicks the second button we clear the text. We use:
+
+Document.querySelector() to access the <textarea> and the button
+EventTarget.addEventListener() to listen for button clicks
+Node.textContent to set and clear the text.
+
+<div class="container">
+  <textarea class="story"></textarea>
+  <button id="set-text" type="button">Set text content</button>
+  <button id="clear-text" type="button">Clear text content</button>
+</div>
+
+
+.container {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+
+button {
+  width: 200px;
+}
+
+
+const story = document.body.querySelector(".story");
+
+const setText = document.body.querySelector("#set-text");
+setText.addEventListener("click", () => {
+  story.textContent = "It was a dark and stormy night...";
+});
+
+const clearText = document.body.querySelector("#clear-text");
+clearText.addEventListener("click", () => {
+  story.textContent = "";
+});
+
+Adding a child element :- 
+
+This example uses a <div> element containing a <div> and two <button> elements. When the user clicks the first button we create a new element and add it as a child of the <div>. When the user clicks the second button we remove the child element. We use:
+
+Document.querySelector() to access the <div> and the buttons
+EventTarget.addEventListener() to listen for button clicks
+Document.createElement to create the element
+Node.appendChild() to add the child
+Node.removeChild() to remove the child.
+
+<div class="container">
+  <div class="parent">parent</div>
+  <button id="add-child" type="button">Add a child</button>
+  <button id="remove-child" type="button">Remove child</button>
+</div>
+
+.container {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+
+button {
+  width: 100px;
+}
+
+div.parent {
+  border: 1px solid black;
+  padding: 5px;
+  width: 100px;
+  height: 100px;
+}
+
+div.child {
+  border: 1px solid red;
+  margin: 10px;
+  padding: 5px;
+  width: 80px;
+  height: 60px;
+  box-sizing: border-box;
+}
+
+
+
+const parent = document.body.querySelector(".parent");
+
+const addChild = document.body.querySelector("#add-child");
+addChild.addEventListener("click", () => {
+  // Only add a child if we don't already have one
+  // in addition to the text node "parent"
+  if (parent.childNodes.length > 1) {
+    return;
+  }
+  const child = document.createElement("div");
+  child.classList.add("child");
+  child.textContent = "child";
+  parent.appendChild(child);
+});
+
+const removeChild = document.body.querySelector("#remove-child");
+removeChild.addEventListener("click", () => {
+  const child = document.body.querySelector(".child");
+  parent.removeChild(child);
+});
