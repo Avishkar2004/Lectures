@@ -1,9 +1,6 @@
 Consistent Hashing :-
-
-
-
-
-
+https://www.geeksforgeeks.org/consistent-hashing/
+write notes from here this is pending
 
 
 Load Balancer :-
