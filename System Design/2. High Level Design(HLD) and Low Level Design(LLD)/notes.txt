@@ -1,0 +1,68 @@
+Difference between High Level Design(HLD) and Low Level Design(LLD) :-
+
+System design involves creating both a High-Level Design (HLD), which is like a roadmap showing the overall plan, and a Low-Level Design (LLD), which is a detailed guide for programmers on how to build each part. It ensures a well-organized and smoothly functioning project. High-Level Design and Low-Level Design are the two main aspects of System Design.
+
+What is High Level Design(HLD)?
+High-level design or HLD refers to the overall system, a design that consists description of the system architecture and design and is a generic system design that includes:
+
+1. System architecture
+2. Database design
+3. Brief description of systems, services, platforms, and relationships among modules.
+
+A diagram representing each design aspect is included in the HLD (which is based on business requirements and anticipated results).
+
+- It contains description of hardware, software interfaces, and also user interfaces.
+- It is also known as macro level/system design
+- It is created by solution architect.
+- The workflow of the user’s typical process is detailed in the HLD, along with performance specifications.
+
+What is Low Level Design(LLD)?
+LLD, or Low-Level Design, is a phase in the software development process where detailed system components and their interactions are specified.
+
+- It describes detailed description of each and every module means it includes actual logic for every system component and it goes deep into each modules specification.
+- It is also known as micro level/detailed design.
+- It is created by designers and developers.
+- It involves converting the high-level design into a more detailed blueprint, addressing specific algorithms, data structures, and interfaces.
+- LLD serves as a guide for developers during coding, ensuring the accurate and efficient implementation of the system’s functionality.
+
+Differences between High Level Design(HLD) and Low Level Design(LLD): 
+
+Watch 1 photo
+
+HIGH-LEVEL DESIGN :-
+- High Level Design is the general system design means it refers to the overall system design.	
+- High Level Design in short called as HLD.	
+- It is also known as macro level/system design.	
+- Furthermore, it describes the overall description/architecture of the application.	
+- High Level Design expresses the brief functionality of each module.	
+- It is created by solution architect.	
+- Here in High Level Design the participants are design team, review team, and client team.	
+- It is created first means before Low Level Design.	
+- In HLD the input criteria is Software Requirement Specification (SRS).	
+- High Level Solution converts the Business/client requirement into a High Level Solution.	
+- In HLD the output criteria is database design, functional design and review record.
+
+
+LOW-LEVEL DESIGN :-
+- Low Level Design is like detailing HLD means it refers to component-level design process.
+- Low Level Design in short called as LLD.
+- It is also known as micro level/detailed design.
+- It describes detailed description of each and every module.
+- Low Level Design expresses details of functional logic of the module.
+- It is created by designers and developers.
+- Here in Low Level Design participants are design team, Operation Teams, and Implementers.
+- It is created second means after High Level Design.
+- In LLD the input criteria is reviewed High Level Design (HLD).
+- Low Level Design converts the High Level Solution into a Detailed solution.
+- In LLD the output criteria is program specification and unit test plan.
+
+Conclusion :-
+
+High-Level Design documents are like big-picture plans that help project managers and architects understand how a system will work and low-Level Design documents are more detailed and are made for programmers.
+
+- They show exactly how to write the code and make the different parts of the system fit together. Both documents are important for different people involved in making and maintaining the software. 
+- Creating a High-Level Design is like making a big plan for the software, and it helps find problems early, so the quality of the software can be better assured.
+- On the other hand, when Low-Level Design is well-documented, it makes it easier for others to check the code and ensure its quality during the actual writing of the software.
+
+Both these steps help catch and fix issues early, making the overall software development process smoother and more reliable.
+
