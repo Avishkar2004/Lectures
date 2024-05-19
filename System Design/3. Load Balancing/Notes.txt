@@ -1,7 +1,112 @@
 Consistent Hashing :-
-https://www.geeksforgeeks.org/consistent-hashing/
-write notes from here this is pending
 
+Consistent hashing is a distributed hashing technique used in computer science and distributed systems to achieve load balancing and minimize the need for rehashing when the number of nodes in a system changes. It is particularly useful in distributed hash tables (DHTs), distributed caching systems, and other distributed storage systems.
+
+
+What is Hashing?
+Hashing involves using a hash function to produce a pseudo-random number. This number is then divided by the size of the available memory space, resulting in the transformation of the random identifier into a position within the given memory space. This process can be conceptually represented as follows:
+
+
+watch 4 photo
+
+
+What is Consistent Hashing?
+
+Consistent hashing is a technique used in computer systems to distribute keys (e.g., cache keys) uniformly across a cluster of nodes (e.g., cache servers).
+
+- It represents the requests by the system/clients and the server nodes in a virtual ring structure which is known as a hashring.
+- The number of locations in this ring is not fixed, but it is considered to have an infinite number of points
+- The server nodes can be placed at random locations on this ring which can be done using hashing.
+- The requests, that is, the users, computers, or serverless programs, are also placed on the same ring using the same hash function.
+
+watch 5 photo
+
+
+What is the use of Consistent Hashing?
+
+Consistent hashing is a popular technique used in distributed systems to address the challenge of efficiently distributing keys or data elements across multiple nodes/servers in a network. Consistent hashing’s primary objective is to reduce the number of remapping operations necessary when adding or removing nodes from the network, which contributes to the stability and dependability of the system
+
+- Consistent hashing can be used in to share the burden among nodes and lessen the effects of node failures.
+- For example, when a new node is added to the network, only a small number of keys are remapped to the new node, which helps to reduce the overhead associated with the addition.
+- Similarly, when a node fails, only a small number of keys are affected, which helps to minimize the impact of the failure on the system as a whole.  
+- Consistent hashing is also useful in ensuring data availability and consistency in a distributed system.
+- For example, when a key is assigned to a node, it can be replicated across multiple nodes to ensure that the data is available even if one node fails.
+
+
+Phases/Working of Consistent Hashing
+Hash Function Selection: The first step in consistent hashing is to choose the hash function that will be used to associate keys with network nodes.
+
+Node Assignment: Based on the hash function’s findings, nodes in the network are given keys in this phase. 
+
+Key Replication: It’s critical to make sure that data is accessible in a distributed system even in the case of node failures. Keys can be copied across a number of network nodes to accomplish this
+
+Node Addition/Removal: In order to keep the system balanced as nodes are added to or removed from the network, it may be necessary to remap the keys to new nodes.
+
+Load balancing: Consistent hashing aids in distributing the load among the network’s nodes.
+
+Failure Recovery: Keys assigned to a node can be remapped to other nodes in the network in the event of a node failure.
+
+Implementation of Consistent Hashing algorithm
+
+Choose a Hash Function:
+Select a hash function that produces a uniformly distributed range of hash values. Common choices include MD5, SHA-1, or SHA-256.
+
+Define the Hash Ring:
+Represent the range of hash values as a ring. This ring should cover the entire possible range of hash values and be evenly distributed.
+
+Assign Nodes to the Ring:
+Assign each node in the system a position on the hash ring. This is typically done by hashing the node’s identifier using the chosen hash function.
+
+
+Key Mapping:
+- When a key needs to be stored or retrieved, hash the key using the chosen hash function to obtain a hash value.
+- Find the position on the hash ring where the hash value falls.
+- Walk clockwise on the ring to find the first node encountered. This node becomes the owner of the key.
+
+Node Additions:
+- When a new node is added, compute its position on the hash ring using the hash function.
+- Identify the range of keys that will be owned by the new node. This typically involves finding the predecessor node on the ring.
+- Update the ring to include the new node and remap the affected keys to the new node.
+
+Node Removals:
+- When a node is removed, identify its position on the hash ring.
+- Identify the range of keys that will be affected by the removal. This typically involves finding the successor node on the ring.
+- Update the ring to exclude the removed node and remap the affected keys to the successor node.
+
+Load Balancing:
+- Periodically check the load on each node by monitoring the number of keys it owns.
+- If there is an imbalance, consider redistributing some keys to achieve a more even distribution.
+
+
+Advantages of using Consistent Hashing
+
+Load balancing: Consistent hashing helps to evenly distribute the network’s workload among its nodes, preserving the system’s effectiveness and responsiveness even as the amount of data increases and changes over time.
+
+scalability: Consistent hashing is extremely scalable, which means that it can adapt to changes in the number of nodes or the amount of data being processed with little to no influence on the performance of the entire system.
+
+Minimal Remapping: Consistent hashing reduces the number of keys that must be remapped when a node is added or removed, ensuring that the system is robust and consistent even as the network changes over time. 
+
+Increased Failure Tolerance: Consistent hashing makes data always accessible and current, even in the case of node failures. The stability and dependability of the system as a whole are enhanced by the capacity to replicate keys across several nodes and remap them to different nodes in the event of failure.
+
+Simplified Operations: The act of adding or removing nodes from the network is made easier by consistent hashing, which makes it simpler to administer and maintain a sizable distributed system.
+
+Disadvantages of using Consistent Hashing
+
+Hash Function Complexity: The effectiveness of consistent hashing depends on the use of a suitable hash function. The hash function must produce a unique value for each key and be deterministic in order to be useful. The system’s overall effectiveness and efficiency may be affected by how complicated the hash function is.
+
+
+Performance Cost: The computing resources needed to map keys to nodes, replicate keys, and remap keys in the event of node additions or removals can result in some performance overhead when using consistent hashing.
+
+
+Lack of Flexibility: In some circumstances, the system’s ability to adapt to changing requirements or shifting network conditions may be constrained by the rigid limits of consistent hashing. 
+
+High Resource Use: As nodes are added to or deleted from the network, consistent hashing may occasionally result in high resource utilization. This can have an effect on the system’s overall performance and efficacy.
+
+
+The complexity of Management: Managing and maintaining a system that uses consistent hashing can be difficult and demanding, and it often calls for particular expertise and abilities.
+
+
+==========================================================================================================================================
 
 Load Balancer :-
 
