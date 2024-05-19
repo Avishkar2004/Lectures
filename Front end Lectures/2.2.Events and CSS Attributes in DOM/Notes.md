@@ -23,7 +23,7 @@ let childNode = parentNode.removeChild('childNode')
 => setAttribute - used to set the attribute of an element.
 => getattribue - get the value of the passed attribute
 => hasAttribute - check if the attribute exist
-
+    
 4.Event bubbling :-
 event start at the most specific element and then flows upward towards the least specific element.
 5.Event Capturing :-
