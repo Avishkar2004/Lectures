@@ -1,0 +1,62 @@
+What are Microservices?
+Microservices are an architectural approach to developing software applications as a collection of small, independent services that communicate with each other over a network. Instead of building a monolithic application where all the functionality is tightly integrated into a single codebase, microservices break down the application into smaller, loosely coupled services.
+
+Watch 1 Photo
+
+1. What are Microservices?
+Microservice is a small, loosely coupled distributed service. Each microservice is designed to perform a specific business function and can be developed, deployed, and scaled independently. It allows you to take a large application and decompose or break it into easily manageable small components with narrowly defined responsibilities
+
+2. How do Microservices work?
+Microservices work by breaking down a complex application into smaller, independent pieces that communicate and work together, providing flexibility, scalability, and easier maintenance, much like constructing a city from modular, interconnected components.
+
+Let’s understand how microservices work:
+
+Modular Structure:
+- Microservices architecture breaks down large, monolithic applications into smaller, independent services.
+- Each service is a self-contained module with a specific business capability or function.
+- This modular structure promotes flexibility, ease of development, and simplified maintenance.
+
+Independent Functions:
+- Each microservice is designed to handle a specific business function or feature.
+- For example, one service may manage user authentication, while another handles product catalog functions.
+- This independence allows for specialized development and maintenance of each service.
+
+Communication :-
+- Microservices communicate with each other through well-defined Application Programming Interfaces (APIs).
+- APIs serve as the interfaces through which services exchange information and requests.
+- This standardized communication enables interoperability and flexibility in integrating services.
+
+flexibility:
+- Microservices architecture supports the use of diverse technologies for each service.
+- This means that different programming languages, frameworks, and databases can be chosen based on the specific requirements of each microservice.
+- Teams have the flexibility to use the best tools for their respective functions.
+
+Independence and Updates:
+-Microservices operate independently, allowing for updates or modifications to one service without affecting the entire system.
+-This decoupling of services reduces the risk of system-wide disruptions during updates, making it easier to implement changes and improvements.
+-Also Microservices contribute to system resilience by ensuring that if one service encounters issues or failures, it does not bring down the entire system.
+
+Scalability :-
+-Microservices offer scalability by allowing the addition of instances of specific services.
+-If a particular function requires more resources, additional instances of that microservice can be deployed to handle increased demand.
+-This scalability is crucial for adapting to varying workloads.
+
+
+3. What are the main components of Microservices Architecture?
+Microservices architecture comprises several components that work together to create a modular, scalable, and independently deployable system.
+
+The main components of microservices include: 
+
+Microservices: These are the individual, self-contained services that encapsulate specific business capabilities. Each microservice focuses on a distinct function or feature.
+API Gateway: The API Gateway is a central entry point for external clients to interact with the microservices. It manages requests, handles authentication, and routes requests to the appropriate microservices.
+Service Registry and Discovery: This component keeps track of the locations and network addresses of all microservices in the system. Service discovery ensures that services can locate and communicate with each other dynamically.
+Load Balancer: Load balancers distribute incoming network traffic across multiple instances of microservices. This ensures that the workload is evenly distributed, optimizing resource utilization and preventing any single service from becoming a bottleneck.
+Containerization: Containers, such as Docker, encapsulate microservices and their dependencies. Orchestration tools, like Kubernetes, manage the deployment, scaling, and operation of containers, ensuring efficient resource utilization.
+Event Bus/Message Broker: An event bus or message broker facilitates communication and coordination between microservices. It allows services to publish and subscribe to events, enabling asynchronous communication and decoupling.
+Centralized Logging and Monitoring: Centralized logging and monitoring tools help track the performance and health of microservices. They provide insights into system behavior, detect issues, and aid in troubleshooting.
+Database per Microservice: Each microservice typically has its own database, ensuring data autonomy. This allows services to independently manage and scale their data storage according to their specific requirements.
+Caching: Caching mechanisms can be implemented to improve performance by storing frequently accessed data closer to the microservices. This reduces the need to repeatedly fetch the same data from databases.
+Fault Tolerance and Resilience Components: Implementing components for fault tolerance, such as circuit breakers and retry mechanisms, ensures that the system can gracefully handle failures in microservices and recover without impacting overall functionality.
+
+Watch 2 Photo
+Watch 3 Photo
