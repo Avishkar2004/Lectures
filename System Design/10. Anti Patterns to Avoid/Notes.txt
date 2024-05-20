@@ -1,0 +1,101 @@
+6 Types of Anti Patterns to Avoid in Software Development
+
+1. Spaghetti Code
+This is one of the most common types of anti-pattern you will find in software development. You write some code, you implement some features, it worked and you proceed further to implement several other features in your software but you didn’t pay attention to the coding conventions or making it cleaner. 
+
+Now just observe the whole structure of your code, observe the complete flow of your software. How it looks like ?? Isn’t it messy?? Isn’t the file and the functions randomly placed here and there? 
+
+As your program grows you will end up with a bunch of functions randomly placed in different files. Nothing is modularized, you will find yourself copying and pasting lines of code over and over. You make a change to one function and then several other functions break. This is called a spaghetti code
+
+
+2. Golden Hammer :-
+
+Software development is a field where it’s not important that if a solution or a pattern worked for a single problem then it will also work for the other problems. If a solution is fit for problem A, problem B, and problem C then it’s not necessary that it will be fit for problem D.
+
+Imagine a scenario that you’re working on a project, you adapted a new solution, a brand-new architecture, and this new architecture solved all your past set of issues. Now you tried this new architecture for another set of the problem….and voilaaaa, it worked for that as well. Now you become confident and you start trying to make it fit everywhere but…wait, you find that it’s not working for the problems XYZ. This is what the golden hammer or the silver bullet is. 
+
+The performance of your software will be degraded if you ram a square into a circle shape. Just because you’re comfortable with a certain approach and it’s easier for you don’t try to solve all kinds of problems with the same approach or the pattern. 
+
+Pick the right set of tools, languages, frameworks, patterns, or the architecture for a specific problem. Always have multiple solutions (at least two) for a single problem. Observe the pros and cons of each one of them and then pick the best one. 
+
+3. Boat Anchor
+If you’re in software development then surely you might have predicted something to implement in the future. What if I need to implement the XYZ feature in the future? What if this case happens in my code?? 
+
+The above what if question force you to add some additional lines of code in your program which isn’t needed right now. This is what boat anchor anti-pattern is in software. This anti-pattern exists in the code when programmers leave a piece of code in the codebase thinking that they might need it later. 
+
+You write some piece of code which is not mentioned in the current requirement but you’re sure that you will need that maybe next month or maybe after two months. You don’t delete it. You think that you will immediately make it work whenever in the future you will be asked to implement it. 
+
+This just creates another anti-pattern in your software. Your colleagues are looking at the code and trying to understand that what this specific piece of code is doing in the codebase. Surely it’s just a wastage of time to read and debug that unnecessary lines of code.
+
+In simple words boat, anchor depicts one thing- heavy to carry (obsolete code which has no use, serves no purpose, does nothing in the code, and adds technical debt). 
+
+4. Dead Code
+
+Dead code is similar to Boat Anchor. Remember the time when you were given a project with a lot of files saved in different directories. You open one file, you see there are several lines of code, you tested each function, modules, and files to identify what it is doing in the project and you found a function that doesn’t look like it is doing anything. You are trying to identify why it is called from everywhere, you are asking your team members to know the purpose of this function but nobody is sure that what it’s doing. 
+
+This function is left by a former engineer who was working in your company a few months back. Everyone is too worried to delete this function. Sometimes you see what it’s doing but the context is missing. You understand the flow but it seems like that this function is not required in your file anymore. This type of anti-pattern is known as dead code. As the name suggests it does nothing in your code. 
+
+Dead code is mostly a piece of code in a file that was written a couple of years ago to build some functionality but now it’s not needed anymore. Your program won’t terminate anywhere if this function will be removed completely. 
+
+It will be risky to completely remove the dead code. You can do monkey testing if you don’t want to remove the dead code. Comment out this piece of code, turn off the things, and see what happens in production. You can also take an iterative approach to remove the code piece by piece from your codebase. Keep checking the functionality in your software to assure that you haven’t broken anything. 
+
+
+5. God Object and God Class
+
+Is there any object or a class that does too many things in your code? This class or object is responsible for too many things. User’s first name, last name, user id, transaction id, a total sum of the transaction, list of items a user is purchasing, etc.
+
+A typical god class/god object takes many responsibilities and a lot of dependencies. God class controls many other classes. If most of the piece of code needs to access one object then that object might be a god object. 
+
+This anti-pattern breaks the principle of “Single Responsibility“. Can you imagine a scenario that you implemented a class, you start adding things to it (because you were too lazy to create another class), you keep doing it, this class grew with time, all the other piece of code is accessing this class and one day you found that it has become difficult to maintain. 
+
+This situation can be a nightmare for a lot of developers. God classes are hard to unit test, maintain, debug, and document. You might have started designing your application with no god class, but when the requirements get added and the team size grows day by day, a single clearly defined class turns into the god classes at some point. 
+
+To solve this issue you need to separate out and modularize your code better. Sometimes programmers compare this with a very funny example. You’re asking for a banana but you received a gorilla holding a banana. You got what you wanted but more than what you needed.  
+
+Below is an example of an interface that has too much information…
+
+interface Car {
+        carName: string;
+        engine: string;
+        model: string;
+        year: number;
+        numOfLegs: string;
+        weight: number;
+        sound: string;
+        claws: boolean;
+        wingspan: string;
+        customerId: string;
+}
+Clearly observe the above interface. You can see it has too much information. So many responsibilities making it too broad and it needs refactoring.  This is a God Object. Now below is the solution to the above problem…
+
+interface Car {
+        carName: string;
+        engine: string;
+        model: string;
+        year: number;
+}
+
+interface Animal {
+        numOfLegs: string;
+        weight: number;
+        sound: string;
+        claws: boolean;
+}
+
+interface Bird {
+        wingspan: string;
+}
+
+interface Transaction {
+        customerId: string;
+}
+Follow the single responsibility and interface segregation principle to solve this anti-pattern. Also, make sure that you do a code review and detect technical debts frequently. 
+
+
+6. Copy and Paste Programming :-
+
+You can easily find an example of this anti-pattern while doing the code review of junior developers or an intern. Junior developers or interns lack the development experience, and they face difficulty in building some features or writing some code from scratch. They try to copy and paste the code from some resources such as StackOverflow, Github, or from the other blogs or videos. They copy and paste these codes into their own file without doing any testing or impact analysis. 
+
+This anti-pattern acts like a virus in your software and to fix this issue you need to change the code everywhere the code was copied. This happens because of the poor understanding of the fundamentals such as loop structures, functions, and subroutines. 
+
+You can avoid this anti-pattern by doing code review frequently and carefully. The code should be tested properly and also analyze the impact if you implement that in your program. It should be carefully reviewed and approved by the senior developers in the team. Also, do code refactoring to abstract each appearance into a single function or a method. 
