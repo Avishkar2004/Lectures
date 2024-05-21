@@ -1,0 +1,52 @@
+Single Points of Failure?
+
+In computing, context single point of failure is those point where the entire system can crash if that one single point fail.
+
+Suppose you have a database and set of servers. If the database crashes then the entire system crashes. So your entire system design will be focused on this part. Even the interviewer will be interested in this.]
+
+Example
+
+Now let’s take some of the components which are connected to a single node and that node is connected to multiple databases. So what will you do if that node fails?
+
+Well, In that case, you can add another node.
+
+watch 1 photo
+There are two ways to set this up. First is as a backup if one node fails you can create another node. But think about it will it be resilient? Another thing you can do is create a backup of the data. Backup nodes for services doesn’t make sense. Because there is a copy of the data then that is more resilient than the other.
+
+Let’s take some cases:
+
+Case 1:
+
+Suppose you have a client connected to one node and that node is connected to one database. So what if the client fails? That is only one client so you cannot care about it.
+
+Case 2:
+
+Now if the node starting to fail then, in that case, you know what you have to do. Yes add another node but what if the database fails at the same time?
+
+So in that case, you can create a master-slave architecture for the database. Where the database can be a read-only database but you want consistency so that’s fine.
+
+What more you can do?
+
+Case 3:
+
+To handle the multiple nodes you can always add the “Load Balancer” into the system. The Load Balancer will handle the request and sends the request to the required nodes. But the load balancer is also a single point of failure. In that case, you can add multiple load balancers into the system.
+
+Case 4:
+
+Now there is one problem can you guess what?
+
+Because there is multiple load balancer the client may not know which load balancer to connect to. So, In that case, we have to add a DNS server to it. Now, DNS will have multiple IP addresses for the single host. This will resolve the conflict.
+
+Do you think we have covered all the single points of failure?
+
+The answer is No.
+
+Case 5:
+
+Now suppose you have a system that fails all at once. What will you do then?
+
+In that case, you can create a multiple regions to create a same system. So If one’s go down other will make up for it.
+
+Conclusion:
+
+I think that’s it you can resolve all this issue by throwing more money or create multiple systems. Netflix has a very productive to handle this kind of problem. You may want to find that out.
