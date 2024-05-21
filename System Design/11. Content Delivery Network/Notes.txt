@@ -1,0 +1,237 @@
+1. What is a Content Delivery Network (CDN)?
+
+watch 1 photo
+
+A Content Delivery Network (CDN) is a globally distributed network of servers designed to enhance the performance and availability of web content. CDNs reduce latency and accelerate the delivery of static assets, such as images, videos, and scripts, by storing copies on servers strategically positioned around the world. When a user requests content, the CDN automatically routes the request to the nearest server, minimizing the physical distance and, consequently, reducing load times.
+
+2. Why use a Content Delivery Network (CDN)?
+Faster Content Delivery:
+CDNs store copies of website content, such as images, videos, scripts, and stylesheets, on servers distributed strategically around the world. This reduces the physical distance between users and the content, leading to faster load times.
+
+Improved Website Performance:
+By distributing content across multiple servers, CDNs help distribute the load on the origin server. This prevents overloading the server with requests, leading to improved overall website performance and responsiveness.
+
+Reduced Latency:
+CDNs minimize latency by serving content from servers located closer to the end-users. This is especially beneficial for global audiences, as it helps prevent the delays caused by data traveling long distances over the internet.
+
+Enhanced Scalability:
+CDNs provide scalability by offloading a significant portion of the traffic from the origin server. This allows websites and applications to handle increased user traffic, particularly during periods of high demand, without compromising performance.
+
+Bandwidth Savings:
+CDNs help reduce the load on the origin server by caching and serving static content locally. This can lead to significant bandwidth savings for the organization hosting the content, as the CDN takes on a substantial portion of the data transfer.
+
+Distributed Security:
+CDNs offer an additional layer of security by distributing content across multiple servers. This helps mitigate Distributed Denial of Service (DDoS) attacks, as the CDN can absorb and mitigate malicious traffic before it reaches the origin server.
+
+Load Balancing:
+CDNs often incorporate load balancing techniques to efficiently distribute incoming traffic among multiple servers. This ensures that no single server is overloaded and helps maintain optimal performance during traffic spikes.
+
+Caching Strategies:
+CDNs implement caching mechanisms to store frequently accessed content. This reduces the need to fetch the same content repeatedly from the origin server, leading to faster load times for users.
+
+3. How Content Delivery Network(CDN) work?
+In a Content Delivery Network, the origin server contains the original version and the edge servers are distributed across various location around the world. Below is the step by step process of how CDN’s work:
+
+Content Replication:
+Web content, such as images and videos, is duplicated and stored on multiple servers globally.
+Geographic Distribution:
+These servers, part of the CDN, are strategically placed in various locations around the world.
+User Request:
+When a user requests content, the CDN automatically determines the nearest server to fulfill the request.
+Cache Mechanism:
+Frequently requested content is stored on these servers, reducing the need to fetch it from the original server.
+Load Balancing:
+Traffic is evenly distributed among multiple servers, preventing overload on any single server.
+Minimized Latency:
+By serving content from nearby servers, the CDN reduces the time it takes for content to reach the user.
+
+
+4. Requirements for Content Delivery Network(CDN)
+4.1 Functional Requirements for Content Delivery Network(CDN)
+Content Distribution:
+Caching
+Load Balancing:
+Content Purge Mechanism:
+
+4.2 Non-Functional Requirements for Content Delivery Network(CDN)
+Scalability
+Redundancy and Reliability:
+Global Load Balancing:
+Content Optimization:
+Mobile Optimization:
+
+5. Uses Case Diagram for Content Delivery Network(CDN)
+
+watch 2 photo
+
+5.1 User:
+End users who access content delivered through the CDN.
+Use Cases of User:
+
+Request Content: Users request content through their browsers.
+Receive Content: Users receive content from the CDN.
+
+5.2 Browser:
+Web browsers used by end users.
+
+Use Cases of Browser:
+
+Send Content Request: Browsers send requests to the CDN for specific content.
+Receive Content: Browsers receive and render the content received from the CDN.
+
+5.3 Content Provider:
+Individuals or organizations providing content that needs to be distributed via the CDN.
+
+Use Cases of Content Provider:
+
+Upload Content: Content providers upload their content to the CDN.
+Configure CDN: Content providers configure settings and preferences related to the CDN.
+
+5.4 CDN:
+The Content Delivery Network responsible for distributing and delivering content efficiently.
+
+Use Cases of CDN:
+Cache Content: CDN caches and stores content for faster retrieval.
+Distribute Content: CDN distributes content to end users based on their geographical location.
+Load Balancing: CDN balances the load by distributing requests across multiple servers.
+Monitor Traffic: CDN monitors traffic and adjusts its performance to ensure optimal content delivery.
+Provide Analytics: CDN provides analytics and reports on content usage and performance.
+
+6. Capacity Estimation for Content Delivery Network (CDN)
+You can estimate the system capacity by analyzing certain data like traffic, number of user coming on site, storage requirements, etc. By analyzing whole data we can further calculate the required storage capacity for whole year. Here is the simplified calculation given:
+
+Traffic is 50,000 vistors per month
+
+Traffic per second = 50000/30*24*60*60
+= 0.019
+
+Assumption- 40% of requests served by CDN
+20% of static content vs. dynamic conten
+
+TPS – 40+20 =60
+Storage required (approx 200kb/file size) = 60*200 = 12000 KB/S = 12 MB/S
+Storage required per year = 12*60*60*24*365 = 378TB
+
+7. Low-Level Design (LLD) for Content Delivery Network(CDN)
+Low-level design involves unique specifications for each thing of the CDN. It interprets high level design right into a greater granular blueprint, providing a guide for developers to put into effect individual modules.
+
+watch 3 photo
+
+7.1 Caching Module
+The Caching Module in the low-level design specializes in outlining the complex information of the way the Content Delivery Network (CDN) handles content material caching
+
+Static content: The design might consist of a time-based totally caching method, dictating how long content stays cached before expiration.
+Dynamic content material: The low-level design would detail how real-time updates from the starting place server are controlled and the way the device handles cache misses, making sure the most recent content is added effectively.
+
+The eviction regulations, including Least Recently Used (LRU) or First-In-First-Out (FIFO), are also defined to efficiently control cache space.
+
+7.2 Load Balancing
+In the low-level design section, Load Balancing is meticulously certain to make sure choicest distribution of incoming requests throughout more than one servers. This entails defining the load balancing algorithms employed, together with Round Robin, Least Connections, or Weighted Round Robin.
+
+How Load Balancing helps in CDN?
+
+The layout outlines how the machine monitors server health, considering elements like response times and error rates, to make knowledgeable choices in distributing visitors. Specifics on how the load balancing mechanism interacts with the CDN controller and part servers are exact to create a robust and responsive load balancing system.
+
+7.3 Security Mechanisms
+The Security Mechanisms within the low-level design consciousness on ensuring the integrity and confidentiality of the CDN. This includes specifying the safety protocols employed, with a particular emphasis on enforcing HTTPS for secure content delivery.
+
+Role of Content Delivery Network(CDN)
+
+It info how the edge servers communicate with each other to preserve consistency in the distributed content. Specifics on how the system handles content material updates and synchronization among edge servers are described, making sure a seamless and efficient content material delivery.
+The low-level design outlines the protocols and mechanisms for communication between edge servers and the CDN controller, emphasizing reliability and responsiveness.
+
+
+8. High Level Design (HLD) for Content Delivery Network(CDN)
+High-level design presents an architectural evaluation of the CDN. It makes a speciality of the interplay among important additives and the general flow of data.
+
+8.1 Edge Servers
+
+watch 4 photo
+In the High-Level Design (HLD), the structure of the Content Delivery Network (CDN) is printed with a focus at the distribution of edge servers globally.
+
+Role of Edge Server:
+
+Edge servers are strategically placed in diverse geographic locations to make certain proximity to give up end-customers, thereby minimizing latency.
+The design emphasizes the load balancing mechanism, detailing how incoming requests are successfully disbursed amongst those aspect servers.
+The average purpose is to create a scalable and responsive network that complements the shipping of web content.
+
+9. Database Design for Content Delivery Network(CDN)
+
+watch 5 photo
+
+9.1 Content Table
+This table stores information about the content served by the CDN, including its type, location, and size.
+
+Content_id: Unique identifier for each piece of content.
+Content_name: Descriptive name or title of the content.
+Content_type: Indicates the type of content (e.g., image, video, script).
+Content_url: URL or path to the content on the CDN.
+Content_size: Size of the content file.
+Last_updated: Timestamp indicating when the content was last updated.
+
+9.2 Edge Server Table
+This table represents the edge servers in the CDN, including their location, capacity, current load, and operational status.
+
+Server_id: Unique identifier for each edge server.
+Server_location: Geographical location of the edge server.
+Server_capacity: Capacity or resources of the server (CPU, RAM, storage).
+Current_load: Current load or usage on the server.
+Status: Operational status of the server (active, standby, offline).
+
+9.3 User Request Table
+This table logs user requests, recording details such as user ID, requested content, the edge server used, and response time.
+
+Request_id: Unique identifier for each user request.
+User_id: ID of the user making the request.
+Content_id: ID of the requested content.
+Request_timestamp: Timestamp indicating when the request was made.
+Edge_server_used: ID of the edge server that fulfilled the request.
+Response_time: Time taken to fulfill the request.
+
+9.4 Traffic Log Table
+This table stores logs related to CDN activities, providing insights into different types of requests and events.
+
+Log_id: Unique identifier for each log entry.
+Timestamp: Timestamp indicating when the log entry was created.
+Request_type: Type of request (content retrieval, cache purge, etc.).
+Details: Additional details about the request or event.
+
+9.5 Cache Table
+This table manages the caching information, including content ID, edge server ID, expiration details, and cache status.
+
+Cache_id: Unique identifier for each cache entry.
+Content_id: ID of the content being cached.
+Edge_server_id: ID of the edge server where the content is cached.
+Expiration_timestamp: Timestamp indicating when the cached content expires.
+Cache_status: Status of the cache (valid, expired, purged).
+
+10. API used for Content Delivery Network (CDN)
+API Code Implementation
+Add New Content API (POST) Request:
+
+Endpoint: /api/content
+Description: Allows administrators to add new content to the CDN.
+{
+  "content_url": "https://example.com/images/image1.jpg",
+  "origin_server": "https://origin-server.com",
+  "cache_duration": 3600  // Cache duration in seconds
+}
+Retrieve Content Details API (GET) Request:
+
+Endpoint: /api/content/c12345
+Description: Retrieves details of a specific content item from the CDN.
+GET /api/content/c12345
+Host: your-cdn-api.com
+Accept: application/json
+Update Content API (PUT) Request:
+
+Endpoint: /api/content/c12345
+Description: Allows administrators to update details of existing content in the CDN.
+PUT /api/content/c12345
+Host: your-cdn-api.com
+Content-Type: application/json
+{
+  "cache_duration": 7200  // Updated cache duration in seconds
+}
+
+
