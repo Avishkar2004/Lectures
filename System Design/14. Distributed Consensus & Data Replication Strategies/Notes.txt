@@ -1,0 +1,95 @@
+Distributed Consensus in Distributed Systems
+A procedure to reach a common agreement in a distributed or decentralized multi-agent platform. It is important for the message passing system.
+
+How to achieve distributed consensus :
+
+There are some conditions that need to be followed in order to achieve distributed consensus.
+
+Termination – Every non-faulty process must eventually decide.
+Agreement – The final decision of every non-faulty process must be identical.
+Validity – Every non-faulty process must begin and ends with the same value.
+Integrity – Every correct individual decides at most one value, and the decided value must be proposed by some individual.
+
+Here is one validation criterion, So basically we should reach a decision with a value that must be the initial value of some process because it is silly to reach an agreement when the agreed value reflects nobody’s initial choice.
+
+The correctness of Distributed Consensus Protocol :   
+
+Safety Property – It ensures that you will never converge to an incorrect value or correct individuals in a network will never converge to an incorrect value.
+Liveness Property – It states that every correct value must be accepted eventually which means something good will eventually happen.
+Termination Property – It guarantees that every correct process will eventually decide on a value. This ensures that the protocol will eventually terminate.
+Agreement Property – It guarantees that all correct processes will eventually agree on a single value. This ensures that all correct nodes in the network will come to a consensus.
+Fault Tolerance – Distributed consensus protocols must be able to handle failures and errors, both in the network and in the participating nodes. This ensures that the system remains correct and functional even in the presence of faults.
+Byzantine Fault Tolerance – Some distributed consensus protocols, like PBFT, have the additional property of Byzantine Fault Tolerance (BFT). This means they can tolerate up to a certain number of malicious nodes in the network without compromising safety and liveness properties.
+Scalability – The protocol must be able to scale to handle large networks and increasing numbers of nodes without sacrificing safety, liveness, or fault tolerance. This ensures that the protocol can be used in real-world scenarios with a large number of participants.
+
+
+Application of Distributed Consensus :    
+
+Application of Distributed Consensus :    
+
+Leader election in a fault-tolerant environment for initiating some global action without introducing a single point of failure.
+Maintaining consistency in a distributed network. Suppose you have different nodes monitoring the same environment. If one of the nodes crashes, a consensus protocol ensures robustness against such faults.
+Blockchain technology: Distributed consensus is a fundamental concept in blockchain technology, which allows multiple nodes to agree on a shared database without relying on a central authority.
+Distributed databases: Distributed consensus protocols can be used to maintain consistency across multiple replicas of a distributed database.
+Load balancing: Consensus protocols can be used to dynamically distribute the workload across multiple nodes in a distributed system to ensure that no node is overloaded.
+Fault tolerance: Distributed consensus protocols can provide fault tolerance in distributed systems by allowing nodes to recover from crashes or network partitions.
+Agreement protocols: Consensus protocols can be used to achieve agreement among multiple nodes in a distributed system on a particular course of action or decision.
+ 
+
+
+===================================================================================================================================================================================================
+
+Data Replication Strategies in System Design
+Data replication is a critical concept in system design that involves creating and maintaining multiple copies of data across different locations or systems. This practice is essential for ensuring data availability, fault tolerance, and scalability in distributed systems. By replicating data, systems can continue to function even if one or more nodes fail, and they can handle increased load by distributing queries among the replicas.
+
+What is Data Replication?
+Data replication is the process of creating and maintaining multiple copies of the same data in different locations or on different storage devices. The goal of data replication is to improve data availability, reliability, and fault tolerance.
+
+By having multiple copies of data, systems can continue to function even if one copy becomes unavailable due to hardware failure, network issues, or other reasons.
+Data replication is commonly used in distributed systems, databases, and storage systems to ensure that data is always accessible and to improve system performance and scalability.
+
+1. Incremental Data Replication
+
+Incremental data replication is a method used in distributed systems to replicate only the changes (inserts, updates, deletes) that have occurred in a dataset since the last replication. Instead of replicating the entire dataset each time, incremental replication captures and transmits only the modifications, reducing the amount of data transferred and improving efficiency.
+
+Advantages of Incremental Data Replication :-
+
+Reduced network bandwidth usage: Incremental replication only transfers the changes made to the data, resulting in lower network traffic and reduced bandwidth consumption.
+Faster replication: Since only the incremental changes are replicated, the replication process is generally faster compared to replicating the entire dataset.
+Lower storage requirements: Incremental replication requires less storage space as only the changes are stored and transmitted.
+
+Disadvantages of Incremental Data Replication :-
+
+Dependency on transaction logs: Log-based replication relies on transaction logs, so any issues or inconsistencies in the logs can impact the replication process.
+Increased complexity: Implementing and managing incremental replication strategies can be more complex compared to full table replication.
+Potential data loss: In the event of a failure or error during replication, there is a risk of data loss if the changes captured in the incremental replication process are not properly replicated. There are two common approaches to incremental data replication:
+
+1.1. Log-based Replication
+Log-based replication relies on database transaction logs to capture and replicate changes. It tracks the modifications made to the data, such as insertions, updates, and deletions, by analyzing the database’s transaction logs. This approach ensures data integrity and consistency during replication. There are two subcategories of log-based replication:
+
+Statement-based replication replicates individual SQL statements from the source database to the destination. It captures the SQL statements executed on the source and replays them on the destination database. This approach requires parsing and analyzing the SQL statements to replicate them accurately.
+Row-based replication replicates individual rows of data that have been modified. Instead of replicating SQL statements, it replicates the actual data changes by capturing and transmitting the modified rows. This approach offers a more granular level of replication and is useful when individual row changes are significant.
+
+1.2. Key-based Replication
+Key-based incremental replication involves identifying specific key values in the source data and replicating only the data associated with those keys. This approach is suitable when the data can be partitioned or segmented based on specific key ranges or values. It allows for selective replication and can improve replication efficiency for large datasets.
+
+2. Full Table Data Replication
+Full table data replication involves replicating the entire source table to the destination without considering incremental changes. This strategy is commonly used when the entire dataset needs to be available in multiple locations or systems.
+
+Advantages of Full Table Data Replication
+Complete data availability: Full table replication ensures that the entire dataset is available at the destination, providing a comprehensive copy of the source data.
+Simplicity: Full table replication is relatively straightforward to implement and manage since it involves replicating the entire table without complex change-tracking mechanisms.
+High data consistency: Replicating the entire table ensures high data consistency between the source and destination systems.
+
+Disadvantages of Full Table Data Replication
+Increased network bandwidth usage: Full table replication requires transferring the entire dataset, resulting in higher network traffic and increased bandwidth consumption.
+Longer replication time: Replicating the entire dataset can take more time compared to incremental replication, especially for large tables or frequent updates.
+Higher storage requirements: Full table replication requires more storage space as the entire dataset needs to be stored and transmitted.
+
+
+2.1. Snapshot Replication
+Snapshot replication copies the entire source table at a specific point in time and replicates it to the destination. It creates a snapshot or image of the source data and transfers it to the destination. Subsequent changes made to the source data are not automatically replicated unless another snapshot is taken. This approach is suitable for scenarios where near real-time replication is not required.
+
+2.2. Transactional Replication
+Transactional replication captures and replicates individual database transactions from the source to the destination. It ensures that every transaction performed on the source database is replicated to the destination in the same order. This approach provides real-time or near-real-time replication and is commonly used for applications requiring high availability and data consistency.
+
