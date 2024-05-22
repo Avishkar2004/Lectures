@@ -1,0 +1,120 @@
+Containers and Virtualisation in Cloud Computing 
+
+What are Cloud Containers?
+Cloud containers are software code packages that contain an application’s code, its libraries, and other dependencies that it needs to run in the cloud. Any software application code requires additional files called libraries and dependencies before it can run. Traditionally, software had to be packaged in multiple formats to run in different environments such as Windows, Linux, Mac, and mobile. However, a container packages the software and all of its dependencies into a single file that can run anywhere. Running the container in the cloud provides additional flexibility and performance benefits at scale.
+
+What are the benefits of cloud containers?
+Applications can consist of tens, hundreds, or even thousands of containers. With cloud containers, you can distribute and manage these containers across many different cloud servers or instances. The cloud containers function as if they were colocated. There are many benefits to distributed cloud computing application architectures. 
+
+Simplified application deployment :-
+Containers are unique because you can use them to deploy software to almost any environment—without specifically bundling the software for the underlying architecture and operating systems. Before containerization became popular, applications had to be bundled with specific libraries to run on specific platforms. This meant that deploying a piece of software on multiple operating systems would result in multiple software versions. Cloud containers enable applications to run on any underlying architecture as long as the containerization platform runs over the top. Now, you need only one version of the production-grade container.
+
+Flexibility
+With cloud containerization, the underlying virtual machines (VM) are all cloud instances. Cloud instances are available in various configurations, with fast spin-up, tear-down, and on-demand cloud computing pricing. This reconfigurability means that you can swap machines in and out as required, depending on the application’s demands. You can optimize resource use by load-balancing container-based applications across various cloud instances rather than individual servers.
+
+Resiliency
+Cloud containers provide increased reliability and availability for applications. In a distributed, containerized architecture, if a given machine fails, another can quickly spin up the lost containers, strengthening the application’s resiliency. You can update a new version of a single container in the application with minimal disruption to the rest of the application. This results in longer uptimes.
+
+Scalability
+In traditional application production environments, the application is limited by a single server resource. Given the right application design and cloud containerization approach, an application’s data processing and input/output are no longer throttled by single-server limitations. They’re distributed among machines, so you can scale unlimitedly and ensure consistent performance and user experience.
+
+What are the use cases of cloud containers?
+Cloud containers are useful for any organization that builds or runs containerized applications and wants to use cloud computing resources.
+
+Microservices
+With microservices architecture, you can decompose applications into smaller independent components that perform a single function. It introduces flexibility and encourages code reuse and efficiency. Cloud containers enable running large applications of hundreds or even thousands of microservices across a distributed network of cloud instances. By sharing the workload across several instances, you can optimize your operations for the best cost, and you can ensure continuity of services if a machine goes down.
+
+DevOps
+DevOps is the automation and management of building, testing, and running software applications. The process itself is repeatable, versioned, and available as code, which saves time in development and reduces the number of manual errors that can occur. The containerization and deployment process is similar and fits well alongside traditional DevOps processes and tooling. Cloud container files are versionable and support continuous integration/continuous deployment (CI/CD) DevOps practices.
+
+Hybrid cloud
+You might want to run container-based application architectures through on-site and cloud-based servers. The deployment of cloud containers suits the hybrid cloud combination well. Container services require only the correct network setup and the containerization service to be running on all machines to perform collectively.
+
+How do cloud containers work?
+A cloud container is simply a container that runs on cloud infrastructure rather than on a local machine or in a data center. Containers in cloud computing are image files that contain everything needed to run software: code, runtime, libraries, environment variables, and configuration files. The images are constructed in layers, starting from a base image—usually a minimal version of an operating system—and then adding additional layers as specified by instructions in a container configuration file. One of the central features of container images is their immutability: once created, they don’t change. You can store images in a container registry and reuse them consistently across different cloud environments.
+
+The following is an overview of different aspects of container technology.
+
+Container runtime
+Container runtimes are responsible for the actual running of containers. They manage the running, lifecycle, and resource isolation of containers. Containers operate as isolated processes in the user space of the cloud instance operating system. They share the host operating system but remain separate from each other and the host. This isolation enables efficient resource allocation, where the runtime enforces limits to avoid resource contention among containers.
+
+Networking
+You can configure cloud containers with their own isolated network stacks, ensuring that applications that are run in separate containers don’t interfere with each other. Port mapping and predefined network channels manage communication with the external world and between containers. 
+
+Storage
+Cloud containers typically employ ephemeral storage, meaning that any data that is written to the container’s writable layer is lost when the container stops. You can use cloud storage volumes for persistent storage. These volumes are independent of the container's lifecycle and can be shared between containers.
+
+Orchestration
+
+In large-scale systems, orchestration tools automate the deployment, scaling, and management of multiple containers. The tools distribute these containers across a cluster of cloud servers, balancing the load and managing failover processes. Automation significantly simplifies containerized application management in complex environments. You can deploy and manage advanced, vast containerized applications across hybrid cloud architectures without the need to perform operations on every single cloud instance. Rather than manually transferring a container image file to each instance, you can program the orchestration tools to pull the image files from the container registry and automatically deploy them to cloud instances.
+
+What is the difference between cloud containers and cloud instances?
+A cloud instance is a VM whose the underlying physical resource is fully managed by a cloud provider. Cloud instances function like physical servers and allow full configurability, so you can use them as you would an on-site server. However, they don’t require hardware and operating system management. Cloud instances can be instantiated and taken down quickly and easily. You can deploy cloud containers on cloud instances to run their distributed, cloud-based applications. The term cloud container refers to a container running on cloud instances.
+
+
+
+Virtualization in Cloud Computing and Types
+Virtualization is a technique of how to separate a service from the underlying physical delivery of that service. It is the process of creating a virtual version of something like computer hardware. It was initially developed during the mainframe era. It involves using specialized software to create a virtual or software-created version of a computing resource rather than the actual version of the same resource. With the help of Virtualization, multiple operating systems and applications can run on the same machine and its same hardware at the same time, increasing the utilization and flexibility of hardware. 
+
+
+In other words, one of the main cost-effective, hardware-reducing, and energy-saving techniques used by cloud providers is Virtualization. Virtualization allows sharing of a single physical instance of a resource or an application among multiple customers and organizations at one time. It does this by assigning a logical name to physical storage and providing a pointer to that physical resource on demand. The term virtualization is often synonymous with hardware virtualization, which plays a fundamental role in efficiently delivering Infrastructure-as-a-Service (IaaS) solutions for cloud computing. Moreover, virtualization technologies provide a virtual environment for not only executing applications but also for storage, memory, and networking.
+
+watch 1 photo
+
+Host Machine: The machine on which the virtual machine is going to be built is known as Host Machine.
+Guest Machine: The virtual machine is referred to as a Guest Machine.
+
+Work of Virtualization in Cloud Computing 
+Virtualization has a prominent impact on Cloud Computing. In the case of cloud computing, users store data in the cloud, but with the help of Virtualization, users have the extra benefit of sharing the infrastructure. Cloud Vendors take care of the required physical resources, but these cloud providers charge a huge amount for these services which impacts every user or organization. Virtualization helps Users or Organisations in maintaining those services which are required by a company through external (third-party) people, which helps in reducing costs to the company. This is the way through which Virtualization works in Cloud Computing. 
+
+Benefits of Virtualization
+More flexible and efficient allocation of resources. 
+Enhance development productivity. 
+It lowers the cost of IT infrastructure. 
+Remote access and rapid scalability. 
+High availability and disaster recovery. 
+Pay peruse of the IT infrastructure on demand. 
+Enables running multiple operating systems.
+
+Drawback of Virtualization
+High Initial Investment: Clouds have a very high initial investment, but it is also true that it will help in reducing the cost of companies.
+Learning New Infrastructure: As the companies shifted from Servers to Cloud, it requires highly skilled staff who have skills to work with the cloud easily, and for this, you have to hire new staff or provide training to current staff.
+Risk of Data: Hosting data on third-party resources can lead to putting the data at risk, it has the chance of getting attacked by any hacker or cracker very easily.
+
+Characteristics of Virtualization
+Increased Security: The ability to control the execution of a guest program in a completely transparent manner opens new possibilities for delivering a secure, controlled execution environment. All the operations of the guest programs are generally performed against the virtual machine, which then translates and applies them to the host programs. 
+Managed Execution: In particular, sharing, aggregation, emulation, and isolation are the most relevant features.
+Sharing: Virtualization allows the creation of a separate computing environment within the same host.
+Aggregation: It is possible to share physical resources among several guests, but virtualization also allows aggregation, which is the opposite process.
+
+Types of Virtualization
+Application Virtualization
+Network Virtualization
+Desktop Virtualization
+Storage Virtualization
+Server Virtualization
+Data virtualization
+
+watch 2 photo
+
+1. Application Virtualization: Application virtualization helps a user to have remote access to an application from a server. The server stores all personal information and other characteristics of the application but can still run on a local workstation through the internet. An example of this would be a user who needs to run two different versions of the same software. Technologies that use application virtualization are hosted applications and packaged applications. 
+
+2. Network Virtualization: The ability to run multiple virtual networks with each having a separate control and data plan. It co-exists together on top of one physical network. It can be managed by individual parties that are potentially confidential to each other. Network virtualization provides a facility to create and provision virtual networks, logical switches, routers, firewalls, load balancers, Virtual Private Networks (VPN), and workload security within days or even weeks. 
+
+3 photo
+
+3. Desktop Virtualization: Desktop virtualization allows the users’ OS to be remotely stored on a server in the data center. It allows the user to access their desktop virtually, from any location by a different machine. Users who want specific operating systems other than Windows Server will need to have a virtual desktop. The main benefits of desktop virtualization are user mobility, portability, and easy management of software installation, updates, and patches.
+
+4. Storage Virtualization: Storage virtualization is an array of servers that are managed by a virtual storage system. The servers aren’t aware of exactly where their data is stored and instead function more like worker bees in a hive. It makes managing storage from multiple sources be managed and utilized as a single repository. storage virtualization software maintains smooth operations, consistent performance, and a continuous suite of advanced functions despite changes, breaks down, and differences in the underlying equipment. 
+
+5. Server Virtualization: This is a kind of virtualization in which the masking of server resources takes place. Here, the central server (physical server) is divided into multiple different virtual servers by changing the identity number, and processors. So, each system can operate its operating systems in an isolated manner. Where each sub-server knows the identity of the central server. It causes an increase in performance and reduces the operating cost by the deployment of main server resources into a sub-server resource. It’s beneficial in virtual migration, reducing energy consumption, reducing infrastructural costs, etc.
+
+watch 4 photo
+
+6. Data Virtualization: This is the kind of virtualization in which the data is collected from various sources and managed at a single place without knowing more about the technical information like how data is collected, stored & formatted then arranged that data logically so that its virtual view can be accessed by its interested people and stakeholders, and users through the various cloud services remotely. Many big giant companies are providing their services like Oracle, IBM, At scale, Cdata, etc.
+
+Uses of Virtualization
+Data-integration
+Business-integration
+Service-oriented architecture data-services
+Searching organizational data
