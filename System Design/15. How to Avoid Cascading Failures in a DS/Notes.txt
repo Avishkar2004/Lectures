@@ -1,0 +1,50 @@
+How to avoid cascading failures in a distributed system
+
+Key Takeaways
+-Cascading failures are failures that involve some kind of feedback mechanism. In distributed software systems they generally involve a feedback loop where some event causes either a reduction in capacity, an increase in latency, or a spike of errors; then the response of the other components of the system makes the original problem worse. 
+-It’s often very difficult to scale out of a cascading failure by adding more capacity to your service: new healthy instances get hit with  excess load instantly and become saturated, so you can’t get to a point where you have enough serving capacity to handle the load. 
+-Sometimes, the only fix is to take your entire service down in order to recover, and then reintroduce load.
+-The potential for cascading failures is inherent in many, if not most, distributed systems. If you haven’t seen one in your system yet, it doesn’t mean you’re immune; you may just be operating comfortably within your system’s limits. There’s no guarantee that will be true tomorrow, or next week.
+
+What is a Cascading Failure?
+Cascading failures are failures that involve some kind of feedback mechanism—in  other words, vicious cycles in action.
+ 
+The outage that took down Amazon DynamoDB in US-East-1 on September 20, 2015 for over four hours is a classic example of a cascading failure. There were two subsystems involved: storage servers and a metadata service. Storage servers request their data partition assignments from the metadata service, which is replicated across data centers. At the time the incident occurred, the average time to retrieve partition assignments had risen significantly, because of the introduction of a new index type (Global Secondary Indexes or GSIs), but the capacity of the metadata service hadn’t been increased,  nor had the configured deadlines for the data-partition assignment request operation. Any request that didn’t succeed within that deadline was considered to have failed, and the client would retry.
+
+watch 1 photo
+
+Why are Cascading Failures So Bad?
+The biggest issue with cascading failures is that they can take down your entire system, toppling instances of your service one by one, until your entire load-balanced service is unhealthy.
+
+The second problem is they’re an exceptionally hard type of failure from which to recover. They normally start with some small perturbation — like a transient network issue, a small spike in load, or the failure of a few instances. Instead of recovering to a normal state over time, the system gets into a worse state. A system in cascading failure won’t self-heal; it’ll only be restored through human intervention.
+
+The third problem is that if the right conditions exist in your system, cascading failures can strike with no warning. Unfortunately, the basic preconditions for cascading failures are difficult to avoid: it’s simply failover. If failure of a component can cause retries, or cause load to shift to other parts of your system, then the basic conditions for cascading failure are there. But all is not lost: there are patterns we can apply that help us defend our systems against cascading failures.
+
+Feedback Cycles: How Cascading Failures Take Down Our Systems
+Cascading failures in distributed software systems generally involve a feedback loop where some event causes either a reduction in capacity, an increase in latency, or a spike of errors; then the response of the other components of the system makes the original problem worse.
+
+The Causal Loop Diagram (CLD) is a good tool to understand these incidents. Below is a CLD for the DynamoDB incident from earlier.
+
+watch 2 photo
+
+Recovering From Cascading Failure
+It’s often very difficult to scale out of a cascading failure by adding more capacity to your service: new healthy instances get hit with excess load instantly and become saturated, so you can’t get to a point where you have enough serving capacity to handle the load.
+
+Many load-balancing systems use a health check to send requests only to healthy instances,  though you might need to turn that behavior off during an incident to avoid focusing all the load on brand-new instances as they are brought up. The same is true of any kind of orchestration or management service that kills instances of your servers that fail health checks (such as kubernetes liveness probes); they will remove overloaded instances, contributing to the capacity problem.
+
+Sometimes, the only fix is to take your entire service down in order to recover, and then reintroduce load. We saw this in the DynamoDB outage. Spotify had an outage in 2013 where they also had to take the impacted service offline to recover. This is especially likely where the overloaded service doesn’t impose any limit on the number of queued or current requests.
+
+
+Six Cascading Failure Antipatterns
+Antipattern 1: Accepting unbounded numbers of incoming requests
+Antipattern 2: Dangerous client retry behaviour
+Antipattern 3: Crashing on bad input — the ‘Query of Death’
+Antipattern 4: Proximity-based failover and the domino effect
+Antipattern 5: Work prompted by failure
+Antipattern 6: Long startup times
+
+Reducing Cascading Failure Risks
+The potential for cascading failures is inherent in many, if not most, distributed systems. If you haven’t seen one in your system yet, it doesn’t mean you’re immune; you may just be operating comfortably within your system’s limits. There’s no guarantee that will be true tomorrow, or next week.
+
+We’ve listed  a number of antipatterns to avoid if you want to reduce the risk of experiencing a cascading failure. No service can withstand an arbitrary spike of load. Nobody wants their service to serve errors, but sometimes it’s the lesser evil, when the alternative is to see your entire service grind to a standstill trying to deal with every incoming request.
+
