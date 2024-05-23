@@ -1,0 +1,48 @@
+Anomaly detection using Isolation Forest
+Anomaly detection is vital across industries, revealing outliers in data that signal problems or unique insights. Isolation Forests offer a powerful solution, isolating anomalies from normal data. In this tutorial, we will explore the Isolation Forest algorithm’s implementation for anomaly detection using the Iris flower dataset, showcasing its effectiveness in identifying outliers amidst multidimensional data.
+
+What is Anomaly Detection?
+Anomalies, also known as outliers, are data points that deviate significantly from the expected behavior or norm within a dataset. They are crucial to identify because they can signal potential problems, fraudulent activities, or interesting discoveries. Anomaly detection plays a vital role in various fields, including data analysis, machine learning, and network security.
+
+Types of Anomalies :-
+Point Anomalies (Global Anomalies): These are the most basic type, representing individual data points that are statistically unusual compared to the rest of the data. For instance, a credit card transaction with an exceptionally high amount might be flagged as a point anomaly.
+
+Contextual Anomalies (Conditional Anomalies): These anomalies depend on the specific context or environment surrounding them. They often occur in time-series data, where patterns can change over time. An example is a sudden spike in temperature during winter within weather data.
+
+Collective Anomalies: These involve groups of related data points exhibiting abnormal behavior collectively, even if individually they might seem normal. They disrupt the overall data distribution. Identifying collective anomalies often requires complex pattern-based algorithms, and they are commonly found in dynamic environments like network traffic data.
+
+Isolation Forests for Anomaly Detection :-
+Isolation Forest is an unsupervised anomaly detection algorithm particularly effective for high-dimensional data. It operates under the principle that anomalies are rare and distinct, making them easier to isolate from the rest of the data. Unlike other methods that profile normal data, Isolation Forests focus on isolating anomalies. At its core, the Isolation Forest algorithm, it banks on the fundamental concept that anomalies, they deviate significantly, thereby making them easier to identify.
+
+Isolation Forests excel at anomaly detection by leveraging a unique approach: isolating anomalies instead of profiling normal data points. The workings of isolation forests are defined below:
+
+Building Isolation Trees: The algorithm starts by creating a set of isolation trees, typically hundreds or even thousands of them. These trees are similar to traditional decision trees, but with a key difference: they are not built to classify data points into specific categories. Instead, isolation trees aim to isolate individual data points by repeatedly splitting the data based on randomly chosen features and split values.
+
+Splitting on Random Features: Isolation trees introduce randomness at each node of the tree, a random feature from the dataset is selected. Then, a random split value is chosen within the range of that particular feature’s values. This randomness helps ensure that anomalies, which tend to be distinct from the majority of data points, are not hidden within specific branches of the tree.
+
+Isolating Data Points: The data points are then directed down the branches of the isolation tree based on their feature values.
+If a data point’s value for the chosen feature falls below the split value, it goes to the left branch. Otherwise, it goes to the right branch.
+This process continues recursively until the data point reaches a leaf node, which simply represents the isolated data point.
+
+Anomaly Score: The key concept behind Isolation Forests lies in the path length of a data point through an isolation tree.
+Anomalies, by virtue of being different from the majority, tend to be easier to isolate. They require fewer random splits to reach a leaf node because they are likely to fall outside the typical range of values for the chosen features.
+Conversely, normal data points, which share more similarities with each other, might require more splits on their path down the tree before they are isolated.
+
+Anomaly Score Calculation: Each data point is evaluated through all the isolation trees in the forest.
+For each tree, the path length (number of splits) required to isolate the data point is recorded.
+An anomaly score is then calculated for each data point by averaging the path lengths across all the isolation trees in the forest.
+
+Identifying Anomalies: Data points with shorter average path lengths are considered more likely to be anomalies. This is because they were easier to isolate, suggesting they deviate significantly from the bulk of the data. A threshold is set to define the anomaly score that separates normal data points from anomalies. This threshold can be determined based on domain knowledge, experimentation, or established statistical principles.
+
+
+Key Takeaways:
+
+Isolation Forests leverage randomness to isolate data points effectively.
+Anomalies require fewer splits on average due to their distinct nature.
+The average path length across all trees serves as an anomaly score.
+Lower scores indicate a higher likelihood of being an anomaly.
+
+Advantages of Isolation Forests
+Effective for Unlabeled Data: Isolation Forests do not require labeled data (normal vs. anomaly) for training, making them suitable for scenarios where labeled data is scarce.
+Efficient for High-Dimensional Data: The algorithm scales well with high-dimensional data sets, which can be challenging for other anomaly detection methods.
+Robust to Noise: Isolation Forests are relatively insensitive to noise and outliers within the data, making them reliable for real-world datasets.
