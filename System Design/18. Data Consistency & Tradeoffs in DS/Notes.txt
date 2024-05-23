@@ -1,0 +1,46 @@
+Consistency Model in Distributed System
+A consistency model is a set of rules that govern the behavior of a distributed system. It establishes the circumstances in which the system’s various parts can communicate with one another and decides how the system will react to modifications or errors. A distributed system’s consistency model plays a key role in ensuring the system’s consistency and dependability in the face of distributed computing difficulties including network delays and partial failures.
+
+watch 1 photo
+
+Consistency models in distributed systems refer to the guarantees provided by the system about the order in which operations appear to occur to clients. Specifically, it determines how data is accessed and updated across multiple nodes in a distributed system, and how these updates are made available to clients.
+
+There are various types of consistency models available in distributed systems. Each consistency model has its own strengths and weaknesses, and the choice of model depends on the specific requirements of the system.
+
+Types of Consistency Models
+Types of Consistency Models
+Strong Consistency: In a strongly consistent system, all nodes in the system agree on the order in which operations occurred. Reads will always return the most recent version of the data, and writes will be visible to all nodes immediately after they occur. This model provides the highest level of consistency. There are some performance and availability issues.
+
+Process   	Write Operation	    Read Operation
+P1      	Write(x)a	 
+P2	 	                          Read(x)a
+
+Pipelined Random Access Memory Or FIFO Consistency Model: PRAM is one of the weak consistency models. Here, all processes view the operations of a single process in the same order that they were issued by that process, while operations issued by different processes can be viewed in a different order from different processes. 
+
+P1	          P2     	P3	      P4
+Write(x)a	 	 	 
+            Read(x)a	 	 
+           Write(x)b	 	 
+                        Read(x)a	Read(x)b
+                        Read(x)b	Read(x)a
+
+
+Sequential Consistency Model: This model was proposed by Lamport. In this sequential consistency model, the result of any execution is the same as if the read and write operations by all processes were executed in some sequential order and the operations of each individual process appear in this sequence in the order specified by its program. The sequential consistency model is weak as compared to the strict consistency.
+
+Process  	Write Operation	    Read Operation
+P1	        Write(x)a	 
+P2	                    	Read(x)a
+P3	        Write(x)b	 
+
+Causal Consistency Model: The causal consistency model was introduced by Hutto and Ahamad in 1990. It makes sure that All processes see causally-related shared accesses in the same order. The causal consistency model is weaker as compared to strict or sequential consistency because the difference between causal consistency and sequential consistency is that causal consistency does not require a total order.
+
+Weak Consistency Model: A weakly consistent system provides no guarantees about the ordering of operations or the state of the data at any given time. Clients may see different versions of the data depending on which node they connect to. This model provides the highest availability and scalability but at the cost of consistency.
+
+Processor Consistency Model: The processor consistency model was introduced by Goodman in 1989 and is analogous to the PRAM consistency model but there’s a small difference i.e there’s a restriction of memory coherence. Memory coherence refers to the fact that all processes should reflect in the same order for all write operations to any given memory address.
+
+
+===================================
+Trade-off :-
+
+trade-off: In distributed systems, the CAP theorem states that it's impossible to achieve full consistency, availability, and partition tolerance simultaneously. You often need to choose between consistency and availability.
+
