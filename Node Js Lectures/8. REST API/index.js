@@ -1,26 +1,24 @@
+//! See The task in notes.md
+const fs = require("fs");
 const express = require("express");
 const users = require("./MOCK_DATA.json");
-const fs = require("fs");
-//this is a instance
-const PORT = 8000;
-const app = express();
+const { error } = require("console");
 
-//this is a middleware or plugin
+const app = express();
+const PORT = 8000;
+
+// Plugin / urlencoded
 app.use(express.urlencoded({ extended: false }));
 
-//routes
-app.get("/", (req, res) => {
-  return res.send("Hello");
-});
 app.get("/users", (req, res) => {
   const html = `
-      <ul>
-      ${users.map((user) => `<li>${user.first_name}</li>`).join("")}</ul>
-      `;
+  <ul>
+    ${users.map((user) => `<li>${user.first_name}</li>`).join("")}
+ </ul>
+  `;
   res.send(html);
 });
 
-//get all users data
 app.get("/api/users", (req, res) => {
   return res.json(users);
 });
@@ -30,33 +28,59 @@ app
   .get((req, res) => {
     const id = Number(req.params.id);
     const user = users.find((user) => user.id === id);
-    return res.json(user);
+    return res.send(user);
   })
   .patch((req, res) => {
-    //Edit user with id
-    return res.json({ status: "Pending" });
+    const id = Number(req.params.id);
+    const index = users.findIndex((user) => user.id === id);
+
+    if (index !== -1) {
+      users[index] = { ...users[index], ...req.body };
+      fs.writeFile(
+        "./MOCK_DATA.json",
+        JSON.stringify(users, null, 2),
+        (err) => {
+          if (err) {
+            return res.status(500).json({ error: "Failed to update user" });
+          }
+          return res.json({ status: "Success", user: users[index] });
+        }
+      );
+    } else {
+      return res.status(404).json({ error: "User Not Found" });
+    }
   })
   .delete((req, res) => {
-    //delete user with id
-    return res.json({ status: "Pending" });
+    const id = Number(req.params.id);
+    const index = users.findIndex((user) => user.id === id);
+
+    if (index !== -1) {
+      users.splice(index, 1);
+      fs.writeFile(
+        "./MOCK_DATA.json",
+        JSON.stringify(users, null, 2),
+        (err) => {
+          if (err) {
+            return res.status(500).json({ error: "Failed to delete user" });
+          }
+          return res.json({ status: "Success" });
+        }
+      );
+    } else {
+      return res.status(404).json({ error: "User Not Found" });
+    }
   });
 
-//making a post req from postman on this
-// 1.open postman
-// 2.make post  req on :- http://localhost:8000/api/users
-// 3.select x-www-form-urlencoded
 app.post("/api/users", (req, res) => {
-  //jo bhi hum front end se send karte hai na vo is body main available hota hai
   const body = req.body;
-  console.log("Body", body); //this will give undefined bcoz you are not usning urlencded:false (this is middle ware or plugin)
-  //send data in file
-  //id frontend se nhi atta hai
-  users.push({ id: users.length + 1, ...body });
-  fs.writeFile("./MOCK_DATA.json", JSON.stringify(users), (err, date) => {
-    return res.json({ status: "Success", id: users.length });
+  users.push({ ...body, id: users.length + 1 });
+  fs.writeFile("./MOCK_DATA.json", JSON.stringify(users), (err, res) => {
+    return res.json({ Status: "Pending" });
   });
+  console.log(body);
+  return res.json({ status: "Success", id: users.length });
 });
 
 app.listen(PORT, () => {
-  console.log("Port is up on 8000");
+  console.log("Server is running on 8000");
 });
