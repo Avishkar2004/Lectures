@@ -34,6 +34,7 @@ app
       ? res.json(user)
       : res.status(404).json({ error: "User not found" }); // Return user or 404 error
   })
+  //! How to update user data :- => go to postman => patch req on url => localhost:8000/api/users/8 => body => x-www-form-urlencoded => then check middleware => then send (Your users data is updated)
   .patch((req, res) => {
     const id = Number(req.params.id); // Get user ID from the request parameters
     const index = users.findIndex((user) => user.id === id); // Find index of the user by ID
@@ -54,6 +55,7 @@ app
       return res.status(404).json({ error: "User not found" }); // Handle user not found
     }
   })
+//! How to delete => go to postman => delete => localhost:8000/api/users/id (konti pan) => then send
   .delete((req, res) => {
     const id = Number(req.params.id); // Get user ID from the request parameters
     const index = users.findIndex((user) => user.id === id); // Find index of the user by ID
@@ -76,6 +78,7 @@ app
   });
 
 // Endpoint to add a new user
+//! go to postman => post req on (localhost:8000/api/users) => body => x-www-form-urlencoded => fill the info => send
 app.post("/api/users", (req, res) => {
   const body = req.body; // Get new user data from the request body
   const newUser = { ...body, id: users.length + 1 }; // Create new user with unique ID
