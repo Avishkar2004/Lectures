@@ -38,6 +38,8 @@ DELETE  /api/users/1 :- delete the users with id 1
 
 
 ===================
+Notes :-
+
 REST API Introduction
 
 Representational State Transfer (REST) is an architectural style that defines a set of constraints to be used for creating web services. REST API is a way of accessing web services in a simple and flexible way without having any processing.
@@ -87,6 +89,7 @@ PUT or PATCH:/api/students/1
 DELETE: Request for Deleting Data of id=1
      Request
 DELETE:/api/students/1
+
 RESTful web services are very popular because they are light weight, highly scalable and maintainable and are very commonly used to create APIs for web-based applications.
 
 const express = require("express");
