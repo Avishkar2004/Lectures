@@ -250,5 +250,5 @@ Used to prevent CSRF
 - CSRF stands for Cross Site Request Forgery.
 - CSRF is along with XSS and SQL Injection one of the most common web attacks.
 - a CSRF attack drive people visiting our site to perform actions they didn’t intend to.
-- A successful CSRF attack can lead to data loss, unauthorized activity, and data loss, so it’s definitely one topic to study carefully.
+- A successful CSRF attack can lead to data loss, unauthorized activity, so it’s definitely one topic to study carefully.
 

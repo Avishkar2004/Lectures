@@ -9,8 +9,8 @@ Databases Queries :-
 - show dbs
 - use<db_name>
 - show collection
-- db.coll.find()
-- db.coll.insert()
+- db.collection.find()
+- db.collection.insert()
 
 Architecture :-
 collection - 'users'
