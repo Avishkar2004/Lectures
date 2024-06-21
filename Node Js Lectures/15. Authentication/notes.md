@@ -122,11 +122,6 @@ http://localhost:8000/url/analytics/wY9A0et7w
 }
 
 
-
-
-
-
-
 Server Side Rendering with EJS :-
 
 we have 3 templating engine
@@ -139,8 +134,6 @@ Advantage of using ejs :-
 
 we have a seprate file for each
 i can write all code and my serve is clean
-
-
 
 have to install ejs
 tell you express you are using ejs

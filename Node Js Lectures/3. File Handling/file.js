@@ -50,6 +50,6 @@ fs.appendFileSync("./text.txt", `${Date.now()} Hey There\n`);
 // fs.mkdirSync("mydocs")
 
 // Folder in folder
-fs.mkdirSync("mydocs/avish", {recursive : true}) 
+// fs.mkdirSync("mydocs/avish", {recursive : true}) 
 
 //! U can't do this in normal js bcoz of security purposes

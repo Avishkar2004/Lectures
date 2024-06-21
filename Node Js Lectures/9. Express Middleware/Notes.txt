@@ -1,11 +1,11 @@
 Middleware :-
 
-clinet ===> get req on /users ====> on server we have function app.get("/user") => then server will send res to server 
+client ===> get req on /users ====> on server we have function app.get("/user") => then server will send res to server 
 
 
 What happend in middleware :-
 
-clietn ====> middleware(custom) ===>  function app.get("/")
+client ====> middleware(custom) ===>  function app.get("/")
 
 1.req will go to the middlware :- middleware can do processing (is he hacker, is he invalid user, detail verify, validate) ===> is everything is oky ==> then send req to server
 

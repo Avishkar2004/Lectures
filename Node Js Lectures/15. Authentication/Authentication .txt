@@ -24,9 +24,6 @@ stateful disadvantage :-
 -we have to use low memory
 
 
-
-
-
 - Difference between Stateless and Stateful Protocol
 - Network Protocols for web browser and servers are categorized into two types: Stateless Protocol, and Stateful protocol. 
 - These two protocols are differentiated on the basis of the requirement of server or server-side software to save status or session information. 
@@ -61,7 +58,7 @@ Stateless Protocol	:-
 - Stateless Protocols works better at the time of crash because there is no state that must be restored, a failed server can simply restart after a crash.	
 - Stateless Protocols handle the transaction very fastly.
 - Stateless Protocols are easy to implement in Internet.	
-- Scaling architecture is relatively easier.	
+- Scaling architecture is relatively easier.
 - The requests are not dependent on the server side and are self contained.	
 - To process different information at a time , different servers can be used.	
 - Example of Stateless are UDP , DNS , HTTP , etc.

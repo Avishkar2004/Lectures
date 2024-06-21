@@ -14,8 +14,8 @@ console.log(os.cpus().length) //12
 
 
 
-console.log("first")
 //! non- blocking req
+console.log("first")
 fs.readFile("./contact.txt", "utf-8", (err, result) =>{
     console.log(result)
 })

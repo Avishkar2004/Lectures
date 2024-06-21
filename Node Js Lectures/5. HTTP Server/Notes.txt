@@ -70,7 +70,7 @@ dynamic web server:-
 
 A dynamic web server consists of a static web server plus extra software, most commonly an application server and a database. We call it "dynamic" because the application server updates the hosted files before sending content to your browser via the HTTP server.
 
-Deeper dive
+Deeper dive :-
 To review: to fetch a webpage, your browser sends a request to the web server, which searches for the requested file in its own storage space. Upon finding the file, the server reads it, processes it as needed, and sends it to the browser. Let's look at those steps in more detail.
 
 Hosting files
@@ -84,7 +84,8 @@ Excluding downtime and system troubles,
 - A dedicated web server is typically maintained by a third party.
 
 
-Communicating through HTTP
+Communicating through HTTP :-
+
 Second, a web server provides support for HTTP (Hypertext Transfer Protocol). As its name implies, HTTP specifies how to transfer hypertext (linked web documents) between two computers.
 
 A Protocol is a set of rules for communication between two computers. HTTP is a textual, stateless protocol.

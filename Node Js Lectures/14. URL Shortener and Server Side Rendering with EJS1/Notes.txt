@@ -140,8 +140,6 @@ Advantage of using ejs :-
 we have a seprate file for each
 i can write all code and my serve is clean
 
-
-
 have to install ejs
 tell you express you are using ejs
 
