@@ -24,7 +24,6 @@ kitne worker thread bana sakte hai ??
 => jitne hamare pass cpu hai utne ham bana sakte hai
 
 
-
 You can check how many cpus do you have :-
 
 const os = require("os");

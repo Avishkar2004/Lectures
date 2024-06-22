@@ -7,14 +7,12 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-
-
 //! handle all socket io
 io.on("connection", (socket) => {
   socket.on("user-message", (message) => {
     // console.log("A new user message", message);
     //   console.log("A new has connected ", socket.id);
-    io.emit("message",message)
+    io.emit("message", message);
   });
 });
 
