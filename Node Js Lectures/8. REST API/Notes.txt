@@ -35,8 +35,6 @@ PATCH /api/users/id :- edit the user with id 1
 
 DELETE  /api/users/1 :- delete the users with id 1
 
-
-
 ===================
 Notes :-
 
@@ -64,7 +62,7 @@ PUT: It is used for updating the capabilities. However, PUT can also be used to 
 
 PATCH: It is used to modify capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource. This resembles PUT, but the body contains a set of instructions describing how a resource currently residing on the server should be modified to produce a new version. This means that the PATCH body should not just be a modified part of the resource, but in some kind of patch language like JSON Patch or XML Patch. PATCH is neither safe nor idempotent. 
 
-DELETE: It is used to delete a resource identified by a URI. On successful deletion, return HTTP status 200 (OK) along with a response body. 
+DELETE: It is used to delete a resource identified by a URI. On successful deletion, return HTTP status 200 (OK) along with a response body.
 
 Request and Response
 Now we will see how request and response work for different HTTP methods. Let’s assume we have an API(https://www.geeksforgeeks.org/api/students) for all students data of gfg.

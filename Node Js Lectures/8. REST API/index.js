@@ -55,7 +55,7 @@ app
       return res.status(404).json({ error: "User not found" }); // Handle user not found
     }
   })
-//! How to delete => go to postman => delete => localhost:8000/api/users/id (konti pan) => then send
+  //! How to delete => go to postman => delete => localhost:8000/api/users/id (konti pan) => then send
   .delete((req, res) => {
     const id = Number(req.params.id); // Get user ID from the request parameters
     const index = users.findIndex((user) => user.id === id); // Find index of the user by ID

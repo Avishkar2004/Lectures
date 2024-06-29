@@ -19,7 +19,7 @@ Non-blocking I/o: Non-blocking i/o  means working with multiple requests without
 
 asynchronous: Asynchronous is executing a callback function. The moment we get the response from the other server or database it will execute a callback function. Callback functions are called as soon as some work is finished and this is because the node.js uses an event-driven architecture. The single thread doesn%E2%80%99t work with the request instead it sends the request to another system which resolves the request and it is accessible for another request.
 
-To implement the concept of the system to handle the request  node.js uses the concept of Libuv.
+To implement the concept of the system to handle the request node.js uses the concept of Libuv.
 
 Libuv is an open-source library built-in C. It has a strong focus on asynchronous and  I/O, this gives node access to the underlying computer operating system, file system, and networking.
 
@@ -45,4 +45,3 @@ The thread pool size can be change:
 process.env.UV_THREADPOOL_SIZE = 1;
 
 watch 1 photo
-
