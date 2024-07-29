@@ -37,7 +37,6 @@ fs.appendFileSync("./text.txt", `${Date.now()} Hey There\n`);
 // fs.cpSync("./text.txt", "./copy.txt") //This will generate copy file
 
 
-
 //Delete File
 // fs.unlinkSync("./copy.txt") //this command will delete copy.txt file
 

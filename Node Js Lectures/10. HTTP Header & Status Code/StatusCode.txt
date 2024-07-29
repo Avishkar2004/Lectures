@@ -2,6 +2,7 @@ HTTP Status Codes :-
 404 :- Not found
 200:- everything went well
 201 :- successfully created
+403: - Forbidden req
 
 HTTP response status codes indicate whether a specific HTTP request has been successfully completed. Responses are grouped in five classes:
 
@@ -216,4 +217,3 @@ Further extensions to the request are required for the server to fulfill it.
 
 511 Network Authentication Required
 Indicates that the client needs to authenticate to gain network access.
-

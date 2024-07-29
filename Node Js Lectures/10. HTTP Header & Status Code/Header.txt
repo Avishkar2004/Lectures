@@ -17,7 +17,7 @@ Instance manipulations that are acceptable in the response. Defined in RFC 3229
 
 2.
 Accept :-
-Accept: application/json
+Accept: application/json 
 
 The media type/types acceptable
 3.
@@ -224,7 +224,6 @@ Warning :-
 Warning: 199 Miscellaneous warning
 
 A general warning about possible problems with the status of the message. Accepts a special range of values.
-
 
 Non-standard headers
 There are some widely used non-standard headers as well, including:
